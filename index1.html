@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>合众易成学习交流平台</title>
+		
+		<script src="javaScript/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<link href="css/index1.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
+	</head>
+	<body>
+			<div class="nav">
+				<ul class="layui-nav">
+				  <li class="layui-nav-item"><a href="">最新活动</a></li>
+				  <li class="layui-nav-item layui-this">
+				    <a href="javascript:;">产品</a>
+				    <dl class="layui-nav-child">
+				      <dd><a href="">选项1</a></dd>
+				      <dd><a href="">选项2</a></dd>
+				      <dd><a href="">选项3</a></dd>
+				    </dl>
+				  </li>
+				  <li class="layui-nav-item"><a href="">大数据</a></li>
+				  <li class="layui-nav-item">
+				    <a href="javascript:;">解决方案</a>
+				    <dl class="layui-nav-child">
+				      <dd><a href="">移动模块</a></dd>
+				      <dd><a href="">后台模版</a></dd>
+				      <dd class="layui-this"><a href="">选中项</a></dd>
+				      <dd><a href="">电商平台</a></dd>
+				    </dl>
+				  </li>
+				  <li class="layui-nav-item"><a href="">社区</a></li>
+<!-- 				 </ul>
+				 <ul class="layui-nav"> -->
+				  <li class="layui-nav-item" lay-unselect="">
+				      <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
+				      <dl class="layui-nav-child">
+				        <dd><a href="javascript:;">修改信息</a></dd>
+				        <dd><a href="javascript:;">安全管理</a></dd>
+				        <dd><a href="javascript:;">退了</a></dd>
+				      </dl>
+				    </li>
+				</ul>
+			</div>
+			
+			<div class="aside">
+				<ul class="layui-nav layui-nav-tree" lay-filter="test">
+				<!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+				  <li class="layui-nav-item layui-nav-itemed">
+				    <a href="javascript:;">收藏夹</a>
+				    <dl class="layui-nav-child">
+				      <dd><a href="javascript:;">英语习题集</a></dd>
+				      <dd><a href="javascript:;">数学习题集</a></dd>
+				      <dd><a href="">语文习题集</a></dd>
+				    </dl>
+				  </li>
+				  
+				  <li class="layui-nav-item">
+				    <a href="javascript:;">我的归档</a>
+				    <dl class="layui-nav-child">
+				      <dd><a href="">11.21</a></dd>
+				      <dd><a href="">11.22</a></dd>
+				      <dd><a href="">11.23</a></dd>
+				    </dl>
+				  </li>
+				  
+				  <li class="layui-nav-item">
+				    <a href="javascript:;">我的关注</a>
+				    <dl class="layui-nav-child">
+				      <dd><a href="">刘师傅</a></dd>
+				      <dd><a href="">李师傅</a></dd>
+				      <dd><a href="">王师傅</a></dd>
+				    </dl>
+				  </li>
+				  
+				  
+				</ul>
+			</div>
+			
+			<div class="main-view">
+				<div class="chart">
+					<div class="layui-carousel" id="test1">
+					  <div carousel-item>
+					    <div>条目1</div>
+					    <div>条目2</div>
+					    <div>条目3</div>
+					    <div>条目4</div>
+					    <div>条目5</div>
+					  </div>
+					</div>
+				</div>
+				<div class="search-column">
+					<form class="layui-form" action="">
+					  <div class="layui-form-item">
+					    <label class="layui-form-label">输入框</label>
+					    <div class="layui-input-block">
+					      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+					    </div>
+					  </div>
+					  <div class="layui-form-item">
+					      <label class="layui-form-label">复选框</label>
+					      <div class="layui-input-block">
+					        <input type="checkbox" name="like[write]" title="写作">
+					        <input type="checkbox" name="like[read]" title="阅读" checked>
+					        <input type="checkbox" name="like[dai]" title="发呆">
+					      </div>
+					   </div>
+					</form>
+				</div>
+				<div class="content"></div>
+			</div>
+	</body>
+</html>
+<script src="javaScript/index.js"></script>
+<script src="layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+  
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+<script>
+layui.use('carousel', function(){
+  var carousel = layui.carousel;
+  //建造实例
+  carousel.render({
+    elem: '#test1'
+    ,width: '100%' //设置容器宽度
+    ,arrow: 'always' //始终显示箭头
+    //,anim: 'updown' //切换动画方式
+  });
+});
+</script>
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+  
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+    layer.msg(JSON.stringify(data.field));
+    return false;
+  });
+});
+</script>

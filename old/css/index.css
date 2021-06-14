@@ -1,0 +1,331 @@
+body{
+	margin:0px;
+}
+.sb-Nav{
+	width:100%;
+	height:50px;
+	background-color: #209E85;
+	box-shadow: 0px 2px 1px #24b89b;
+}
+.nav-top{
+	background: #209e85;
+	height:100%;
+}
+	
+.container{
+	width: 90%;
+	height: 100%;
+	/* border: 1px #000000 solid; */
+	margin:0px auto;
+}
+.nav-top-left{
+	width:75%;
+	height:100%;
+	float:left;
+	margin-left: 10px;
+	/* border: 1px #000000 solid; */
+}
+.nav-top-right{
+	width: 20%;
+	height: 100%;
+	float:right;
+	margin-right:10px;
+	/* border: 1px #000000 solid; */
+}
+.nav-top-logo{
+	width: 20%;
+	height: 100%;
+	float:left;
+} 
+.nav-logo-image{
+	height: 100%;
+}
+	
+.nav-top-list{
+	float:right;
+	width: 75%;
+	height:75%;
+	margin-top:5px;
+	/* border: 1px  #000000 solid; */
+}
+	
+.nav-top-list ul{
+	display:inline-block;
+	margin: 0px;
+	/* border:1px #000000 solid; */
+	height:100%;
+	list-style-type: none;
+}
+.nav-top-list li{
+	display: inline-block;
+	vertical-align: middle;
+	margin-top:5px;
+	/* height:100%; */
+}
+.nav-top-left-list-node{
+	display: inline-block;
+	float:left;
+	vertical-align: middle;
+	margin: 0px 20;
+	color:#ffffff;
+	/* border: 1px #FFFFFF solid; */
+	width: 80px;
+	height: 100%;
+	font-size: 18px;
+	font-weight: 200;
+}
+	
+.nav-top-right-list-node{
+	display: inline-block;
+	margin-left:0px;
+	color:#f3f3f3;
+	/* border: 1px #FFFFFF solid; */
+	width: 50px;
+	height: 100%;
+	font-size: 20px;
+	font-weight: 300;
+	cursor: pointer;
+}
+.nav-top-right-list-node:hover{
+	color:#000000
+}
+
+	
+.nav-top-search{
+	display:inline-block;
+	float:right;
+	vertical-align: middle;
+	height:30px;
+	width:350px;
+	border: 2px  #156d5b solid;
+	box-shadow: 1px 1px 1px  #1d9c81;
+	background-color: #1a836e;
+	border-radius: 15px;
+	color:#FFFFFF;
+	font-size: 20px;
+}
+
+#bg{
+	position: fixed;
+	background-color: #000000;
+	height:100%;
+	width:100%;
+	opacity: .6;
+	z-index: 1000;
+}
+
+	
+#login{
+	z-index: 1001;
+    height: 400px;
+    width: 500px;
+    border-radius: 10px;
+    background-color: #fbfbfb;
+    position: absolute;
+    top: calc(50% - 200px);
+    left: calc(50% - 250px);
+}
+
+.corss{
+	width:15px;
+	height:15px;
+	/* border: 1px #F3F3F3 solid; */
+	position: relative;
+	top:5px;
+	left:calc(100% - 25px);
+	cursor: pointer;
+	text-align: center;
+}
+	
+.corss:hover{
+	background-color: #1D9C81;
+}
+
+.loginUserInfoSheet{
+	position: relative;
+    width: 450px;
+    height: 340px;
+    top: 20px;
+    padding-top: 0px;
+    left: 20px;
+    /* border: #156D5B solid; */
+}
+.loginInfo{
+   width: 90%;
+   height: 75px;
+   margin-top: 25px;
+   margin-left: 25px;
+}
+.loginInfo p:first-of-type{
+	color: #7fa587;
+    width: 85px;
+    font-size: 20px;
+    letter-spacing: 5px;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.loginInfo p:last-of-type{
+    color: #ff1616;
+	font-size: 15px;
+	margin-left: 180px;
+	margin-top: 5px;
+	letter-spacing: 5px;
+	margin-bottom: 0px;
+}
+.loginInfo input{
+	letter-spacing: 1px;
+	width: 260px;
+	height: 28px;
+	margin-left: 15px;
+	border: 2px solid #688e85;
+	border-radius: 12px;
+	box-shadow: 1px 1px 1px 1px #c1cac8;
+	font-size: 16px;
+	padding-left: 10px;
+}
+.loginInfo button,
+.regSubmit button,
+.registerUserInfoSheet button{
+	width: 100px;
+	height: 45px;
+	margin: 0px;
+	border-radius: 5px;
+	background-color: #5cc5b0;
+	box-shadow: 2px 2px 1px 1px #c1cac8;
+	border: 2px solid #24b89b;
+}
+
+.loginInfo button:hover,
+.regSubmit button:hover,
+.registerUserInfoSheet button:hover{
+	background-color: #35ceb0ad;
+	border: 2px solid #c6f5ec;
+}
+
+#register{
+    width: 700px;
+    height: 100;
+    position: absolute;
+    background-color: #fbfbfb;
+    top: calc(50% - 400px);
+    left: calc(50% - 350px);
+    z-index: 1001;
+    border-radius: 20px;
+}
+
+.registerUserInfoSheet{
+	height: 730px;
+    width: 660px;
+    /* border: 1px solid; */
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.infoSheetTitle {
+    /* border: 1px solid; */
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+.infoSheetTitle h3 {
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: 20px;
+    font-weight: 600;
+	color: #74947b;
+	margin:0px;
+}
+.regInfoUnit{
+	/* border: 1px solid; */
+	width: 500px;
+	height: 80px;
+	float: left;
+	margin-left: 175px;
+	margin-bottom: 15px;
+}
+
+.regSubmit{
+	float: left;
+	/* border: 1px solid; */
+	width: 300px;
+	height: 50px;
+	margin-top: 20px;
+	margin-left: 250px;
+}
+
+.regInfoUnit p:first-of-type{
+color: #7fa587;
+width: auto;
+font-size: 16px;
+letter-spacing: 5px;
+font-weight: bold;
+display: inline-block;
+margin-left: 5px;
+margin-top: 0px;
+margin-bottom: 2px;
+margin-right:10px;
+}
+
+.regInfoUnit p:last-of-type{
+	margin: 0px 50px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: #f41b1b;
+}
+
+.regInfoUnit p:nth-of-type(2){
+	display: inline-block;
+    color: red;
+    font-size: 20px;
+    margin: 0px 3px;
+}
+
+.regInfoUnit input[type="text"],
+.regInfoUnit input[type="password"]{
+	height: 30px;
+	width: 270px;
+	border-radius: 13px;
+	box-shadow: 1px 1px 1px #74947b;
+	border: 2px solid #1d9c81;
+	background-color: #f3fffd;
+	font-size: 20px;
+	letter-spacing: 2px;
+}
+
+.regInfoUnit input[type="radio"]{
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	border: 2px solid #1d9c81;
+	border-radius: 8px;
+	margin-top: 5px;
+	margin-right: 50px;
+}
+
+.regInfoUnit input[type="radio"]:checked::after{
+	content: "\2713";
+}
+
+.registerUserInfoSheet .mailCheck{
+	margin-top:30px;
+}
+
+.registerUserInfoSheet .mailCheck input{
+	width:150px;
+	float: left;
+}
+
+.mailCheck button{
+	width: 70px;
+	height: 35px;
+	margin-left: 24px;
+	margin-bottom: 0px;
+	float: left;
+	background-color: #1daf92;
+	border-radius: 8px;
+}

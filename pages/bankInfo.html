@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>合众易成学习交流平台</title>
+		
+		<script src="../javaScript/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		
+		
+		<link rel="stylesheet" href="../layui/css/layui.css"  media="all">
+		<link href="../css/aside.css" rel="stylesheet" />
+		<link href="../css/bankInfo.css" rel="stylesheet"/>
+		<link href="../css/nav.css" rel="stylesheet"/>
+		<link href="../css/general.css" rel="stylesheet">
+	</head>
+	<body>
+			<div>
+				<div class="nav">
+					<div class="nav-logo">
+						<a :href="urls.index"><img :src="urls.logo" class="layui-nav-img icon"></a>
+					</div>
+					<div class="nav-option">
+						<ul class="layui-nav nav-ul">
+						  <li v-for="item in navList" class="layui-nav-item list-node">
+							  <a :href="item.href">{{item.title}}</a>
+						  </li>
+						</ul>
+					</div>
+					<div class="nav-login" v-if="userInfo == null" >
+						<ul class="layui-nav nav-ul">
+						  <li class="layui-nav-item">
+						    <a :href="urls.login">登录</span></a>
+						  </li>
+						  <li class="layui-nav-item">
+						    <a :href="urls.register">注册</span></a>
+						  </li>
+						</ul>
+					</div>
+					<div class="nav-user" v-if="userInfo != null">
+						<ul class="layui-nav nav-ul">
+						  <li class="layui-nav-item">
+						    <a href="">个人中心<span class="layui-badge-dot"></span></a>
+						  </li>
+						  <li class="layui-nav-item" lay-unselect="">
+						    <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img icon">我</a>
+						    <dl class="layui-nav-child">
+						      <dd><a href="javascript:;">修改信息</a></dd>
+						      <dd><a href="javascript:;">安全管理</a></dd>
+						      <dd><a href="javascript:;">退了</a></dd>
+						    </dl>
+						  </li>
+						</ul>
+					</div>
+					
+				</div>
+				
+			
+			
+				<div class="aside">
+					<ul class="layui-nav layui-nav-tree aside-ul" lay-filter="test">
+					<!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+					  <li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;" class="aside-li">收藏夹</a>
+						<dl class="layui-nav-child" v-for="item in aside.collections">
+							<dd>
+							  <a href="javascript:;" class="aside-dd">{{item.name}}</a>
+							  <dl class="layui-nav-child" v-for="bank in item.banks">
+								<dd><a :href="bank.url" class="aside-dd-dd">{{bank.name}}</a></dd>
+							  </dl>
+							</dd>
+						</dl>
+					  </li>
+					  
+					  <li class="layui-nav-item">
+						<a href="javascript:;" class="aside-li">我的归档</a>
+						<dl class="layui-nav-child" v-for="item in aside.subfield">
+							<dd>
+							  <a href="javascript:;" class="aside-dd">{{item.name}}</a>
+							  <dl class="layui-nav-child" v-for="label in item.secLabel">
+								<dd>
+									<a :href="label.url" class="aside-dd-dd">{{label.name}}</a>
+									<dl class="layui-nav-child" v-for="bank in label.banks">
+										<dd>
+											<a :href="bank.url" class="aside-dd-dd-dd">{{bank.name}}</a>
+										</dd>
+									</dl>
+								</dd>
+							  </dl>
+							</dd>
+						</dl>
+					  </li>
+					  
+					  <li class="layui-nav-item">
+						<a href="javascript:;" class="aside-li">我的关注</a>
+						<dl class="layui-nav-child" v-for="item in aside.follow">
+						  <dd><a :href="item.url" class="aside-dd-dd">{{item.nickname}}</a></dd>
+						</dl>
+					  </li>
+					  
+					  
+					</ul>
+				</div>
+		
+				<div class="bankInfo">
+					<div class="bank-detail">
+						<div class="bank-detail-title">
+							<span>{{bankDetail.name}}</span>
+						</div>
+						<div class="bank-detail-author">
+							<span>作者信息：</span><br />
+							<div class="bank-detail-author-icon">
+								<a :href="bankDetail.user.id">
+									<img :src="bankDetail.user.icon" />
+								</a>
+							</div>
+							<table class="layui-table"  lay-skin="row" lay-size="lg">
+							  <colgroup>
+							    <col width="250">
+							    <col width="150">
+							    <col>
+							  </colgroup>
+							  <thead>
+							    <tr>
+							      <th>作者昵称</th>
+								  <th>题单数量</th>
+							    </tr> 
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <td>{{bankDetail.user.nickname}}</td>
+							      <td>{{bankDetail.user.bankCnt}}</td>
+							    </tr>
+							  </tbody>
+							</table>
+						</div>
+						<div class="bank-detail-content">
+							<span>题单信息：</span>
+							<table class="layui-table"  lay-skin="row" lay-size="lg">
+							  <colgroup>
+							    <col width="180">
+							    <col width="150">
+							    <col>
+								<col width="130">
+							  </colgroup>
+							  <thead>
+							    <tr>
+							      <th>创建时间</th>
+							      <th>分类</th>
+							      <th>题单描述</th>
+								  <th>习题数量</th>
+							    </tr> 
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <td>{{bankDetail.createTime}}</td>
+							      <td>{{bankDetail.collection}}</td>
+							      <td>{{bankDetail.description}}</td>
+							      <td>{{bankDetail.questionCount}}</td>
+							    </tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+					<div class="subject-labels">
+						<div class="subject-labels-search">
+							<input type="text" name="title" required lay-verify="required" placeholder="检索题目标签" autocomplete="off" class="layui-input">
+						</div>
+						<div class="subject-labels-list layui-form">
+							<!-- <div class="subject-labels-list-node" v-for="item in subjectLabels">
+								 <div class="layui-form-item">
+								    <div class="layui-input-block">
+								      <input type="checkbox" name="like[dai]" :title="item.name">
+								    </div>
+								  </div>
+							</div> -->
+							<table class="layui-table"  lay-skin="nob" lay-size="lg">
+							  <colgroup>
+							    <col width="220">
+							    <col>
+							  </colgroup>
+							  <tbody>
+							    <tr v-for="(item,index) in subjectLabels">
+							      <td>{{item.name}}</td>
+							      <td class="layui-form">
+										<input type="checkbox" lay-filter="test" :name="item.id" title="选择" v-model="item.selected" :value="index">
+								  </td>
+							    </tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+					<div class="subject-info">
+						<div class="subject-info-title">
+							<span>题目列表</span>
+						</div>
+						<div class="subject-info-list">
+							
+							<div class="subject-info-list-node" v-for="(item,index) in subjects"  @click="layout(index)">
+								<div class="subject-info-list-node-info">
+									<div class="subject-info-list-node-info-index">
+										<span>序号</span>
+										<span>{{index + 1}}</span>
+									</div>
+									<div class="subject-info-list-node-info-type">
+										<span>题目类型</span>
+										<span>{{item.type}}</span>
+									</div>
+									<div class="subject-info-list-node-info-label">
+										<span>题目标签</span>
+										<span>{{item.label}}</span>
+									</div>
+								</div>
+								<div class="subject-info-list-node-text">
+									<div class="subject-info-list-node-text-title">
+										<span>{{item.title}}</span>
+									</div>
+									<div class="subject-info-list-node-text-content">
+										<!-- <div class="subject-info-list-node-text-content-"></div> -->
+										<span v-text="item.content"></span>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="subject-info-page lay-row">
+							<div id="subject-info-page-bar" class="layui-col-md10"></div>
+						</div>
+					</div>
+					
+					
+					
+					<div id="subject-layout" style="display: none;">
+						<div class="subject-layout-title">
+							<span>题目</span>
+							<span>{{subjects[layoutInfo.subjectid].title}}</span>
+						</div>
+						<div class="subject-layout-content">
+							<span>选项</span>
+							<span>{{subjects[layoutInfo.subjectid].content}}</span>
+						</div>
+<!-- 						<div class="subject-layout-options">
+							<button type="button" class="subject-layout-options-answer layui-btn layui-btn-radius layui-btn-normal">显示答案</button><br />
+							<button type="button" class="subject-layout-options-hint layui-btn layui-btn-radius layui-btn-normal">显示提示</button>
+							<input type="checkbox" name="zzz" lay-skin="switch" lay-text="开启|关闭" lay-filter="subject">
+							<input type="checkbox" name="zzz" lay-skin="switch" lay-text="开启|关闭" lay-filter="subject">
+						</div> -->
+						<div class="subject-layout-answer" @click="clickAns()">
+							<span>答案</span>
+							<span v-show="subjects[layoutInfo.subjectid].showAns">{{subjects[layoutInfo.subjectid].answer}}</span>
+						</div>
+						<div class="subject-layout-hint" @click="clickHint()">
+							<span>提示</span>
+							<span v-show="subjects[layoutInfo.subjectid].showHint">{{subjects[layoutInfo.subjectid].hint}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+	</body>
+</html>
+<script src="../javaScript/jquery-3.5.1.js"></script>
+<script src="../layui/layui.js" charset="utf-8"></script>
+<script src="../javaScript/nav.js"></script>
+<script src="../javaScript/aside.js"></script>
+<script src="../javaScript/bankInfo.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+  
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+
+<script>
+	
+layui.use(['carousel', 'form'], function(){
+  var carousel = layui.carousel
+  ,form = layui.form;
+  
+  //常规轮播
+  carousel.render({
+    elem: '#carousel'
+    ,arrow: 'fade',
+	interval: 8000,
+	height: '300px',
+	width: '1100px'
+  });
+  
+  //事件
+  carousel.on('change(test4)', function(res){
+    console.log(res)
+  });
+  
+  var $ = layui.$, active = {
+    set: function(othis){
+      var THIS = 'layui-bg-normal'
+      ,key = othis.data('key')
+      ,options = {};
+      
+      othis.css('background-color', '#5FB878').siblings().removeAttr('style'); 
+      options[key] = othis.data('value');
+      ins3.reload(options);
+    }
+  };
+  
+  //监听开关
+  form.on('checkbox(test)', function(data){
+	  bankInfo.subjectLabels[data.value].selected = !bankInfo.subjectLabels[data.value].selected;
+  });
+  
+  form.on('checkbox(subject)',function(data){
+	  console.log(data.value);
+  })
+  
+  form.render('checkbox','subject');
+  
+  $('.demoSet').on('keyup', function(){
+    var value = this.value
+    ,options = {};
+    if(!/^\d+$/.test(value)) return;
+    
+    options[this.name] = value;
+    ins3.reload(options);
+  });
+  
+  //其它示例
+  $('.demoTest .layui-btn').on('click', function(){
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+  });
+});
+</script>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>合众易成学习交流平台</title>
+		
+		<script src="../javaScript/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		
+		<link rel="stylesheet" href="../css/general.css" />
+		<link rel="stylesheet" href="../layui/css/layui.css"  media="all">
+		<link href="../css/userProfile.css" rel="stylesheet"/>
+		<link href="../css/nav.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div>
+			<div class="nav">
+				<div class="nav-logo">
+					<a :href="urls.index"><img :src="urls.logo" class="layui-nav-img icon"></a>
+				</div>
+				<div class="nav-option">
+					<ul class="layui-nav nav-ul">
+					  <li v-for="item in navList" class="layui-nav-item list-node">
+						  <a :href="item.href">{{item.title}}</a>
+					  </li>
+					</ul>
+				</div>
+				<div class="nav-login" v-if="userInfo == null" >
+					<ul class="layui-nav nav-ul">
+					  <li class="layui-nav-item">
+						<a :href="urls.login">登录</span></a>
+					  </li>
+					  <li class="layui-nav-item">
+						<a :href="urls.register">注册</span></a>
+					  </li>
+					</ul>
+				</div>
+				<div class="nav-user" v-if="userInfo != null">
+					<ul class="layui-nav nav-ul">
+					  <li class="layui-nav-item">
+						<a href="">个人中心<span class="layui-badge-dot"></span></a>
+					  </li>
+					  <li class="layui-nav-item" lay-unselect="">
+						<a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img icon">我</a>
+						<dl class="layui-nav-child">
+						  <dd><a href="javascript:;">修改信息</a></dd>
+						  <dd><a href="javascript:;">安全管理</a></dd>
+						  <dd><a href="javascript:;">退了</a></dd>
+						</dl>
+					  </li>
+					</ul>
+				</div>
+				
+			</div>
+			
+			<div class="user-profile">
+				<div class="title">
+					
+				</div>
+				<div class="form-span">
+					<form class="layui-form" action="">
+					  <div class="layui-form-item nickname">
+						<label class="layui-form-label">昵称</label>
+						<div class="layui-input-block">
+						  <input type="text" name="title" required  lay-verify="required" placeholder="给自己取个昵称吧" autocomplete="off" class="layui-input">
+						</div>
+					  </div>
+					  
+					  <div class="layui-form-item wechat">
+						<label class="layui-form-label">微信号</label>
+						<div class="layui-input-block">
+						  <input type="text" name="title" required  lay-verify="required" placeholder="关联个微信号吧" autocomplete="off" class="layui-input">
+						</div>
+					  </div>
+					  
+						<div class="layui-form-item sex">
+							<label class="layui-form-label">性别</label>
+							<div class="layui-input-block">
+								<input type="radio" name="sex" value="男" title="男" checked="">
+								<input type="radio" name="sex" value="女" title="女">
+							</div>
+					    </div>
+					  
+						<div class="layui-form-item birthday">
+							<div class="layui-inline">
+								<label class="layui-form-label">生日</label>
+								<div class="layui-input-block">
+									<input type="text" name="date" id="date1" autocomplete="off" class="layui-input" placeholder="填写您的出生日期">
+								</div>
+							</div>
+						</div>
+						
+						<div class="layui-form-item region">
+						    <label class="layui-form-label">语言</label>
+						    <div class="layui-input-block">
+						      <select name="interest" lay-filter="aihao">
+						        <option value=""></option>
+						        <option value="0" selected="">中文简体</option>
+						      </select>
+						    </div>
+						 </div>
+						 
+						<div class="layui-form-item submit-button">
+							<div class="layui-input-block">
+								<button type="submit" class="layui-btn submit-btn" lay-submit="" lay-filter="demo1">确认修改</button>
+							</div>
+						</div>
+						
+						<div class="layui-upload uploadIcon">
+						  <button type="button" class="layui-btn upload-btn" id="test1">上传头像</button>
+						  <div class="layui-upload-list">
+						    <img class="layui-upload-img" id="demo1">
+						    <p id="demoText"></p>
+						  </div>
+						</div>   
+					</form>
+				</div>
+				<div class="line"></div>
+				<div class="option">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="../javaScript/user.js"></script>
+<script src="../layui/layui.js" charset="utf-8"></script>
+<script src="../javaScript/nav.js"></script>
+
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+  
+  
+  
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+<script>
+layui.use('carousel', function(){
+  var carousel = layui.carousel;
+  //建造实例
+  carousel.render({
+    elem: '#test1'
+    ,width: '100%' //设置容器宽度
+    ,arrow: 'always' //始终显示箭头
+    //,anim: 'updown' //切换动画方式
+  });
+});
+</script>
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+  
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+    layer.msg(JSON.stringify(data.field));
+    return false;
+  });
+});
+</script>
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+  //日期
+  laydate.render({
+    elem: '#date'
+  });
+  laydate.render({
+    elem: '#date1'
+  });
+  
+});
+</script>
+<script>
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+  
+  //普通图片上传
+  var uploadInst = upload.render({
+    elem: '#test1'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#demo1').attr('src', result); //图片链接（base64）
+      });
+    }
+    ,done: function(res){
+      //如果上传失败
+      if(res.code > 0){
+        return layer.msg('上传失败');
+      }
+      //上传成功
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+  });
+});
+</script>

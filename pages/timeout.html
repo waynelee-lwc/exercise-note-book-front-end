@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>合众易成学习交流平台</title>
+<link rel="stylesheet" href="../layui/css/layui.css" media="all">
+
+</head>
+<body>
+
+
+
+<div class="layui-header header header-demo" winter>
+  <div class="layui-main" style="width:100%">
+    <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
+    <ul class="layui-nav">
+      
+    
+      
+      
+      <li class="layui-nav-item layui-hide-xs" lay-unselect>
+        <a href="#" target="_blank">反馈报错 <span class="layui-badge-dot" style="margin-top: -5px;"></span></a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]--> 
+<div style="padding: 50px 0; height: 600px; text-align: center;">
+  <h1>
+    <i class="layui-icon" style="line-height: 500px; font-size: 400px; color: #393D50;">&#xe69c;</i>
+  </h1>
+  <br />
+  <p style="font-size: 20px; font-weight: 300; color: #333;">您没有权限访问该页面...您可以选择<a href="login.html" style="color:red">重新登录</a></p>
+  <br />
+  <p style="font-size: 18px; font-weight: 300; color: #777;">原因:1.您可能不被允许访问该资源  2.您的登录已超时/账号已在另一处登录
+  </p>
+</div>
+</body>
+</html>
+<script src="../layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+  
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+
+<script>
+	
+layui.use(['carousel', 'form'], function(){
+  var carousel = layui.carousel
+  ,form = layui.form;
+  
+  //常规轮播
+  carousel.render({
+    elem: '#carousel'
+    ,arrow: 'fade',
+	interval: 8000,
+	height: '300px',
+	width: '1100px'
+  });
+  
+  //事件
+  carousel.on('change(test4)', function(res){
+    console.log(res)
+  });
+  
+  var $ = layui.$, active = {
+    set: function(othis){
+      var THIS = 'layui-bg-normal'
+      ,key = othis.data('key')
+      ,options = {};
+      
+      othis.css('background-color', '#5FB878').siblings().removeAttr('style'); 
+      options[key] = othis.data('value');
+      ins3.reload(options);
+    }
+  };
+  
+  //监听开关
+  form.on('checkbox(test)', function(data){
+	  bankInfo.subjectLabels[data.value].selected = !bankInfo.subjectLabels[data.value].selected;
+  });
+  
+  form.on('checkbox(subject)',function(data){
+	  console.log(data.value);
+  })
+  
+  form.render('checkbox','subject');
+  
+  $('.demoSet').on('keyup', function(){
+    var value = this.value
+    ,options = {};
+    if(!/^\d+$/.test(value)) return;
+    
+    options[this.name] = value;
+    ins3.reload(options);
+  });
+  
+  //其它示例
+  $('.demoTest .layui-btn').on('click', function(){
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+  });
+});
+</script>

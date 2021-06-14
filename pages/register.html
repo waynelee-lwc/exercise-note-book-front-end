@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>合众易成学习交流平台</title>
+<meta charset="UTF-8">
+<title>后台管理-注册</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../layui/css/layui.css" media="all">
+<!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+.main-body {
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+}
+.register-main .register-bottom .center .item111 {
+	width: 288px;
+	height: 200px;
+	display:none;
+}
+.register-main .register-bottom .center .item .icon111 {
+	display: inline-block;
+	width: 400px;
+}
+
+.register-main .register-bottom .center .item input {
+	display: inline-block;
+	width: 227px;
+	height: 22px;
+	padding: 0;
+	position: absolute;
+	border: 0;
+	outline: 0;
+	font-size: 14px;
+	letter-spacing: 0;
+}
+
+.register-main .register-bottom .center .item .icon-1 {
+}
+
+.register-main .register-bottom .center .item .icon-2 {
+}
+
+.register-main .register-bottom .center .item .icon-3 {
+}
+
+.register-main .register-bottom .center .item .icon-4 {
+	position: absolute;
+	right: -10px;
+	cursor: pointer;
+}
+
+.register-main .register-bottom .center .item .icon-5 {
+}
+
+.register-main .register-bottom .center .item .icon-6 {
+	position: absolute;
+	right: -10px;
+	margin-top: 8px;
+	cursor: pointer;
+}
+
+.register-main .register-bottom .tip .icon-nocheck {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 2px;
+	border: solid 1px #9abcda;
+	position: relative;
+	top: 2px;
+	margin: 1px 8px 1px 1px;
+	cursor: pointer;
+}
+
+.register-main .register-bottom .tip .icon-check {
+	margin: 0 7px 0 0;
+	width: 14px;
+	height: 14px;
+	border: none;
+}
+
+.register-main .register-bottom .center .item .icon {
+	display: inline-block;
+	width: 65px;
+	height: 22px;
+}
+
+.register-main .register-bottom .center .item {
+	width: 288px;
+	height: 35px;
+	border-bottom: 1px solid #dae1e6;
+	margin-bottom: 35px;
+}
+
+.register-main .register-bottom .center .item1 {
+	margin-left: 150px !important;
+}
+
+.register-main {
+	width: 428px;
+	position: relative;
+	float: left;
+}
+
+.register-main .register-top {
+	height: 117px;
+	background-color: #148be4;
+	border-radius: 12px 12px 0 0;
+	font-family: SourceHanSansCN-Regular;
+	font-size: 30px;
+	font-weight: 400;
+	font-stretch: normal;
+	letter-spacing: 0;
+	color: #fff;
+	line-height: 117px;
+	text-align: center;
+	overflow: hidden;
+	-webkit-transform: rotate(0);
+	-moz-transform: rotate(0);
+	-ms-transform: rotate(0);
+	-o-transform: rotate(0);
+	transform: rotate(0);
+}
+
+.register-main .register-top .bg1 {
+	display: inline-block;
+	width: 74px;
+	height: 74px;
+	background: #fff;
+	opacity: .1;
+	border-radius: 0 74px 0 0;
+	position: absolute;
+	left: 0;
+	top: 43px;
+}
+
+.register-main .register-top .bg2 {
+	display: inline-block;
+	width: 94px;
+	height: 94px;
+	background: #fff;
+	opacity: .1;
+	border-radius: 50%;
+	position: absolute;
+	right: -16px;
+	top: -16px;
+}
+
+.register-main .register-bottom {
+	width: 428px;
+	background: #fff;
+	border-radius: 0 0 12px 12px;
+	padding-bottom: 53px;
+}
+
+.register-main .register-bottom .center {
+	width: 288px;
+	margin: 0 auto;
+	padding-top: 40px;
+	padding-bottom: 15px;
+	position: relative;
+}
+
+.register-main .register-bottom .tip {
+	clear: both;
+	height: 16px;
+	line-height: 16px;
+	width: 288px;
+	margin: 0 auto;
+}
+
+body {
+	background: url(../images/loginbg.png) 0% 0%/cover no-repeat;
+	position: static;
+	background-attachment: fixed;
+	font-size: 12px;
+}
+
+input::-webkit-input-placeholder {
+	color: #a6aebf;
+}
+
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color: #a6aebf;
+}
+
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color: #a6aebf;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: #a6aebf;
+}
+
+input:-webkit-autofill { /* 取消Chrome记住密码的背景颜色 */
+	-webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+html {
+	height: 100%;
+}
+
+.register-main .register-bottom .tip {
+	clear: both;
+	height: 16px;
+	line-height: 16px;
+	width: 288px;
+	margin: 0 auto;
+}
+
+.register-main .register-bottom .tip .register-tip {
+	font-family: MicrosoftYaHei;
+	font-size: 12px;
+	font-weight: 400;
+	font-stretch: normal;
+	letter-spacing: 0;
+	color: #9abcda;
+	cursor: pointer;
+}
+
+.register-main .register-bottom .tip .forget-password {
+	font-stretch: normal;
+	letter-spacing: 0;
+	color: #1391ff;
+	text-decoration: none;
+	position: absolute;
+	right: 62px;
+}
+
+.register-main .register-bottom .register-btn {
+	width: 288px;
+	height: 40px;
+	background-color: #1E9FFF;
+	border-radius: 16px;
+	margin: 24px auto 0;
+	text-align: center;
+	line-height: 40px;
+	color: #fff;
+	font-size: 14px;
+	letter-spacing: 0;
+	cursor: pointer;
+	border: none;
+}
+
+.register-main .register-bottom .center .item .validateImg {
+	position: absolute;
+	right: 1px;
+	cursor: pointer;
+	height: 36px;
+	border: 1px solid #e6e6e6;
+}
+
+.footer {
+	left: 0;
+	bottom: 0;
+	color: #fff;
+	width: 100%;
+	position: absolute;
+	text-align: center;
+	line-height: 30px;
+	padding-bottom: 10px;
+	text-shadow: #000 0.1em 0.1em 0.1em;
+	font-size: 14px;
+}
+
+.padding-5 {
+	padding: 5px !important;
+}
+
+.footer a, .footer span {
+	color: #fff;
+}
+
+@media screen and (max-width:428px) {
+	.register-main {
+		width: 360px !important;
+	}
+	.register-main .register-top {
+		width: 360px !important;
+	}
+	.register-main .register-bottom {
+		width: 360px !important;
+	}
+}
+
+input[type="radio"] {
+	width: 20px !important;
+	position: static !important;
+	height: 20px;
+	display:inline-block;
+	margin:0  10px 0px 0px;
+}
+.radiotext {
+	display: inline-block;
+	width : 20px !important;
+	height: 100%;
+	vertical-align: middle;
+	width: 20px !important;
+	font-size:15px;
+	color:#888;
+}
+</style>
+</head>
+<body>
+	<div class="user-register main-body">
+		<div class="register-main">
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<div class="register-top">
+				<span>用户注册</span> <span class="bg1"></span> <span class="bg2"></span>
+			</div>
+			<form action="#" class="layui-form register-bottom"
+				onsubmit="return false">
+				<div class="center">
+					  <div class="item">
+						 <select name="rank" id="rank" lay-filter="demo2" >
+       						 <option value="">请选择身份</option>
+        					 <option value="学生">学生</option>
+      			   	     	 <option value="正式教师">正式教师</option>
+        					 <option value="大学生">大学生</option>
+        					 <option value="推广商">推广商</option>
+        					 <option value="机构">机构</option>
+				     	 </select>
+     				 </div> 
+					<div class="item">
+						<span class="icon">用户名</span> <input type="text" name="username" lay-verify="required"
+							lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入用户名" maxlength="24"  />
+					</div>
+					<div class="item">
+						<span class="icon">昵称</span><input type="text" name="nickname" lay-verify="required"
+							lay-reqtext="昵称是必填项，岂能为空？"
+							placeholder="请输入昵称" maxlength="24" />
+					</div>
+					<div class="item" id="work_office" style="display:none;">
+						<span class="icon">工作单位</span> <input type="text" name="work_office"
+							placeholder="请输入工作单位" maxlength="24" />
+					</div>
+					<div class="item">
+						<span class="icon">电话</span> <input type="text" name="phone"
+							placeholder="请输入电话" maxlength="24" lay-verify="phone"/>
+					</div>
+					<div class="item">
+						<span class="icon">邮箱</span> <input type="text"  lay-verify="email"
+						 autocomplete="off" name="email" v-model="formData.email.txt"
+							placeholder="请输入邮箱" maxlength="24" />
+					</div>
+					<div class="item">
+						<span class="icon">密码</span> <input type="password" lay-verify="pass"
+							 name="password" placeholder="请输入密码" maxlength="20"> <span
+							class="bind-password icon icon-4"></span>
+					</div>
+					<div class="item" style="display:none;" id="pp" >
+						<span class="icon">家长密码</span> <input type="password" 
+							name="parentpassword" placeholder="请输入家长密码" maxlength="20">
+						<span class="bind-password icon icon-4"></span>
+					</div>
+					<div class="item">
+						<span class="icon">性别</span> <label><input type="radio" name="sex"
+							 lay-ignore value="男" title="男" checked=""> <span class="radiotext">男</span></label>
+					 <label>	<input  lay-ignore  type="radio" name="sex" value="女" title="女"> <span
+							class="radiotext">女</span></label>
+					</div>
+					<div class="item">
+						<span class="icon">生日</span> <input type="text"  id="date" name="birthday" lay-verify="date" 
+						placeholder="yyyy-MM-dd" autocomplete="off" >
+						<span class="bind-password icon icon-4"></span> 
+					</div>
+					<div class="item" id="id_card" style="display:none;">
+						<span class="icon">身份证号</span> <input type="text"  id="id_card" lay-verify="id_card"
+						 name="id_card" placeholder="请输入身份证号" maxlength="20"> <span
+							class="bind-password icon icon-4"></span>
+					</div>
+
+					<div class="layui-upload" id="license_div" style="display:none;" >
+						<button type="button" class="layui-btn"  id="license">上传教师资格证</button>
+						<div class="layui-upload-list">
+							<img class="layui-upload-img" name="license" id="img1">
+							<p id="demoText"></p>
+						</div>
+					</div>
+					<div class="item111" id="introduce">
+						<span class="icon111">履历</span>
+						<textarea placeholder="请输入内容" style="width: 288px;"
+							name="introduce" id="introduce" class="layui-textarea"></textarea>
+
+						<span class="bind-password icon icon-4"></span>
+					</div>
+					<div class="item">
+						<span class="icon">验证码</span>
+							<input type="text" style="width:100px" name="emailcheck" lay-verify="required"
+							lay-reqtext="请填写验证码呐" 
+								placeholder="邮箱验证码" autocomplete="off" >
+							<button type="button" style="float:right" class="layui-btn"
+								@click="getMailCode(),check()"   lay-filter="mailCode">{{text.codeBtn}}</button>
+							</div>
+						<div class="item"
+							style="text-align: center; width: 100%; height: 100%; margin: 0px;">
+							<button class="register-btn" type="submit" lay-submit=""
+								lay-filter="demo1">注册</button>
+						</div>
+						</div></form>
+		</div>
+	</div>
+</body>
+
+</html>
+<script src="../layui/layui.js"></script>
+<script src="../axios/axios.min.js"></script>
+<script src="../javaScript/vue.js"></script>
+<script src="../javaScript/user.js"></script>
+<script>
+
+layui.use(['form','upload'], function(){
+	  var form = layui.form,upload=layui.upload;
+	  var uploadInst = upload.render({
+		    elem: '#license'
+		    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+		    ,before: function(obj){
+		      //预读本地文件示例，不支持ie8
+		      obj.preview(function(index, file, result){
+		    	  alert("index:"+index);
+		    	  alert("result"+result);
+		    	  alert("file:"+file);
+		        $('#img1').attr('src', result); //图片链接（base64）
+		      });
+		    }
+		    ,done: function(res){
+		      //如果上传失败
+		      if(res.code > 0){
+		        return layer.msg('上传失败');
+		      }
+		      //上传成功
+		     layer.msg("上传成功");
+		      
+		    }
+		    ,error: function(){
+		      //演示失败状态，并实现重传
+		      var demoText = $('#demoText');
+		      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+		      demoText.find('.demo-reload').on('click', function(){
+		        uploadInst.upload();
+		      });
+		    }
+		  });
+		
+	  form.on('select(demo2)',function(data){
+			if(data.value!="学生"){
+				//alert(data.value);
+				document.getElementById("id_card").style.display='block';
+				document.getElementById("license_div").style.display='block';
+				document.getElementById("work_office").style.display='block';
+				document.getElementById("introduce").style.display='block';
+				document.getElementById("pp").style.display='none';
+			}else{
+				document.getElementById("introduce").style.display='none';
+				document.getElementById("pp").style.display='block';
+				document.getElementById("id_card").style.display='none';
+				document.getElementById("license_div").style.display='none';
+				document.getElementById("work_office").style.display='none';
+			}
+			if(data.value==""){
+				layer.msg("请选择身份！");
+			}
+		})
+	  form.on('submit(demo1)', function(data){
+	    data=data.field;
+		 form.verify({
+		    phone: function(value){
+		      if(value.length < 11){
+		        return '电话需要11个字符啊';
+		      }
+		    }
+		    ,pass: [
+		      /^[\S]{6,12}$/
+		      ,'密码必须6到12位，且不能出现空格'
+		    ]
+		    ,content: function(value){
+		      layedit.sync(editIndex);
+		    }
+		  });
+		 if(data.rank==""){
+			 layer.msg("请选择身份！");
+			 return false;
+		 }else if(data.rank=="学生"){//学生口
+			 if(data.parentpassword==""){
+				 layer.msg("家长密码也要填写噢！");
+				 return false;
+			 }
+	    var formData = new FormData();
+		console.log(data.email);
+		console.log("昵称"+data.nickname);
+		console.log("密码"+data.password);
+		formData.append('email', data.email);
+		formData.append('rank', data.rank);
+		formData.append('phone', data.phone);
+		formData.append('user_name', data.username);
+		formData.append('sex', data.sex);
+		formData.append('birthday', data.birthday);
+		formData.append('p_password', data.parentpassword);
+		formData.append('nickname',data.nickname);
+		formData.append('password', data.password);
+		console.log(data.email);
+		console.log(data.emailcheck);
+		
+		
+		axios.post("../user/register.action?target="
+				+data.email+"&mailCheck="+data.emailcheck,
+				formData).then(function(res) {
+			var data = res.data;
+			if (res.data.code == "200") {
+				alert(data.message);
+				window.location.href ="../pages/login.html";
+			} else {
+				alert(data.message+"["+data.code+"]");
+			}
+		})
+	    
+	    return false;
+		 }else {//教师口
+			 console.log("迪迦："+data.license);
+			 if(data.id_card==""){
+				 layer.msg("身份证号也要填写噢！");
+				 return false;
+			 }
+		 	 if(data.license==""){
+		 		 layer.msg("请上传教师资格证！");
+		 		return false;
+		 	 }
+			 if(data.introduce==""){
+				 layer.msg("请填写履历内容呐！");
+				 return false;
+			 }
+			 form.verify({
+				    id_card: [/(^$)|(^\d{15}$)|(^\d{17}(x|X|\d)$)/,'请输入正确的身份证号']
+				  });
+	    var formData = new FormData();
+		console.log(data.email);
+		console.log("昵称"+data.nickname);
+		console.log("密码"+data.password);
+		formData.append('email', data.email);
+		formData.append('rank', data.rank);
+		formData.append('phone', data.phone);
+		formData.append('user_name', data.username);
+		formData.append('sex', data.sex);
+		formData.append('birthday', data.birthday);
+		formData.append('p_password', data.parentpassword);
+		formData.append('nickname',data.nickname);
+		formData.append('password', data.password);
+		console.log(data.email);
+		console.log(data.emailcheck);
+		
+		
+		axios.post("../user/register.action?target="
+				+data.email+"&mailCheck="+data.emailcheck,
+				formData).then(function(res) {
+			var data = res.data;
+			if (res.data.code == "200") {
+				alert(data.message);
+				window.location.href ="../pages/login.html";
+			} else {
+				alert(data.message+"["+data.code+"]");
+			}
+		})
+	    
+	    return false;
+			 
+			 
+			 
+		 }
+		 
+		 
+		 });  
+}); 
+layui.use('laydate', function(){
+	  var laydate = layui.laydate;
+	  
+	  //常规用法
+	  laydate.render({
+	    elem: '#date'
+	  });
+});
+</script>

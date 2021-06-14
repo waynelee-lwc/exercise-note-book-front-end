@@ -1,0 +1,132 @@
+.user-profile{
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    top: calc(50% - 400px);
+    left: calc(50% - 350px);
+    background-color: #ffffff;
+    box-shadow: 7px 8px 3px 3px #88b8e0;
+    border-radius: 20px;
+}
+
+.nickname{
+	position: absolute;
+	top:150px;
+	left:0px;
+}
+
+.wechat{
+	position: absolute;
+	top:350px;
+	left:0px;
+}
+
+.birthday{
+	position: absolute;
+	top:450px;
+}
+
+.submit-button{
+	position: absolute;
+    top: 540px;
+    left: 110px;
+}
+
+.sex{
+	position: absolute;
+	top:250px;
+}
+
+.region{
+	position: absolute;
+	top:450px;
+	right:40px;
+}
+
+.uploadIcon{
+    position: absolute;
+    top: 180px;
+    right: 120px;
+}
+
+.layui-input{
+	height: 35px;
+    width: 240px;
+    border-radius: 7px;
+    background-color: aliceblue;
+}
+.layui-form-label{
+	font-size: 20px;
+}
+.form-span{
+    position: absolute;
+    width: 100%;
+    height: 80%;
+}
+
+.submit-btn{
+    width: 280px;
+    height: 45px;
+    background-color: #2196f3;
+    margin: 0px;
+}
+
+.upload-btn{
+	width:135px !important;
+	height:40px !important;
+	background-color: #2196f3;
+}
+
+.layui-upload-img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    border: 1px solid #d2d2d2;
+}
+
+.layui-btn:hover{
+	background-color: #645cd4
+}
+
+.line{
+    width: 80%;
+    border: 1px solid #c5c1c1;
+    position: absolute;
+    top: 600px;
+    left: calc(10%);
+    border-radius: 1px;
+}
+.option{
+    width: 90%;
+    height: 75px;
+    /* border: 1px solid; */
+    position: absolute;
+    bottom: 20px;
+    left: calc(5%);
+}
+.opt-register{
+	position: absolute;
+	right: 30px;
+}
+.opt-findPsw{	
+	position: absolute;
+    left: 30px;	
+}
+.opt-findPsw a,.opt-register a{
+	color: #2196F3;
+    font-size: 18px;
+}
+.opt-findPsw a:hover,
+.opt-register a:hover{
+	color: #5cc4f3;
+    font-size: 18px;
+}
+
+.title{
+    width: 90%;
+    height: 120px;
+    border: 1px solid;
+    position: absolute;
+    top: 15px;
+    left: 5%;
+}

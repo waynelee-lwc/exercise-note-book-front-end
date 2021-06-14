@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>合众易成学习交流平台</title>
+		<script src="../javaScript/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		
+		<link rel="stylesheet" href="../css/general.css" />
+		<link rel="stylesheet" href="../layui/css/layui.css"  media="all">
+		<link href="../css/userRegister.css" rel="stylesheet"/>
+		<link href="../css/nav.css" rel="stylesheet"/>
+	</head>
+	<body>
+			<div>
+					<div class="nav">
+						<div class="nav-logo">
+							<a :href="urls.index"><img :src="urls.logo" class="layui-nav-img icon"></a>
+						</div>
+						<div class="nav-option">
+							<ul class="layui-nav nav-ul">
+							  <li v-for="item in navList" class="layui-nav-item list-node">
+								  <a :href="item.href">{{item.title}}</a>
+							  </li>
+							</ul>
+						</div>
+						<div class="nav-login" v-if="userInfo == null" >
+							<ul class="layui-nav nav-ul">
+							  <li class="layui-nav-item">
+							    <a :href="urls.login">登录</span></a>
+							  </li>
+							  <li class="layui-nav-item">
+							    <a :href="urls.register">注册</span></a>
+							  </li>
+							</ul>
+						</div>
+						<div class="nav-user" v-if="userInfo != null">
+							<ul class="layui-nav nav-ul">
+							  <li class="layui-nav-item">
+							    <a href="">个人中心<span class="layui-badge-dot"></span></a>
+							  </li>
+							  <li class="layui-nav-item" lay-unselect="">
+							    <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img icon">我</a>
+							    <dl class="layui-nav-child">
+							      <dd><a href="javascript:;">修改信息</a></dd>
+							      <dd><a href="javascript:;">安全管理</a></dd>
+							      <dd><a href="javascript:;">退了</a></dd>
+							    </dl>
+							  </li>
+							</ul>
+						</div>
+						
+					</div>
+					
+				
+				<div class="user-register">
+					<div class="title">
+						
+					</div>
+					<div class="form-span">
+						  <div class="layui-form-item username">
+							<label class="layui-form-label">用户名</label>
+							<div class="layui-input-block">
+							  <input type="text" name="title" placeholder="用户名" autocomplete="off" class="layui-input" v-model="formData.userName">
+							</div>
+						  </div>
+						  
+						  <div class="layui-form-item phone">
+							<label class="layui-form-label">电话</label>
+							<div class="layui-input-block">
+							  <input type="text" name="title" placeholder="电话" autocomplete="off" class="layui-input" v-model="formData.phone">
+							</div>
+						  </div>
+						  
+						  <div class="layui-form-item email">
+							<label class="layui-form-label">邮箱</label>
+							<div class="layui-input-block">
+							  <input type="text" name="title" placeholder="邮箱" autocomplete="off" class="layui-input" v-model="formData.email">
+							</div>
+						  </div>
+						  
+						  <div class="layui-form-item identifyCode">
+							<label class="layui-form-label">验证码</label>
+							<div class="layui-input-block">
+							  <input type="text" name="title" placeholder="邮箱验证码" autocomplete="off" class="layui-input" v-model="formData.code">
+							  <button type="submit" class="layui-btn" @click="getMailCode" lay-filter="mailCode">{{text.codeBtn}}</button>
+							</div>
+							
+						  </div>
+						  
+						  <div class="layui-form-item password">
+							<label class="layui-form-label">密码</label>
+							<div class="layui-input-block">
+							  <input type="text" name="title" placeholder="请输入密码" autocomplete="off" class="layui-input" v-model="formData.password">
+							</div>
+						  </div>
+						  
+						  <div class="layui-form-item submit-button">
+							  <div class="layui-input-block">
+								<button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">注册</button>
+							  </div>
+						  </div>
+					</div>
+					<div class="line"></div>
+					<div class="option">
+						<div class="opt-findPsw"><a :href="urls.login">已有账户？点击登录</a></div>
+					</div>
+				</div>
+			</div>
+	</body>
+</html>
+<script src="../javaScript/user.js"></script>
+<script src="../layui/layui.js" charset="utf-8"></script>
+<script src="../javaScript/nav.js"></script>
+
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+  
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+<script>
+layui.use('carousel', function(){
+  var carousel = layui.carousel;
+  //建造实例
+  carousel.render({
+    elem: '#test1'
+    ,width: '100%' //设置容器宽度
+    ,arrow: 'always' //始终显示箭头
+    //,anim: 'updown' //切换动画方式
+  });
+});
+</script>
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+  
+  //监听提交
+  form.on("submit(*)",function(data){
+	  console.log(data.feild);
+  })
+  
+});
+</script>

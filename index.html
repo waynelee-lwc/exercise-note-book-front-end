@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>合众易成学习交流平台</title>
+		
+		<script src="javaScript/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		
+		
+		<link rel="stylesheet" href="layui/css/layui.css"  media="all">
+		<link href="css/aside.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet"/>
+		<link href="css/nav.css" rel="stylesheet"/>
+		<link href="css/general.css" rel="stylesheet">
+	</head>
+	<body>
+			<div>
+				<div class="nav">
+					<div class="nav-logo">
+						<a :href="urls.index"><img :src="urls.logo" class="layui-nav-img icon"></a>
+					</div>
+					<div class="nav-option">
+						<ul class="layui-nav nav-ul">
+						  <li v-for="item in navList" class="layui-nav-item list-node">
+							  <a :href="item.href">{{item.title}}</a>
+						  </li>
+						</ul>
+					</div>
+					<div class="nav-login" v-if="userInfo == null" >
+						<ul class="layui-nav nav-ul">
+						  <li class="layui-nav-item">
+						    <a :href="urls.login"><span>登录</span></a>
+						  </li>
+						  <li class="layui-nav-item">
+						    <a :href="urls.register"><span>注册</span></a>
+						  </li>
+						</ul>
+					</div>
+					<div class="nav-user" v-if="userInfo != null">
+						<ul class="layui-nav nav-ul">
+						  <li class="layui-nav-item">
+						    <a href="">个人中心<span class="layui-badge-dot"></span></a>
+						  </li>
+						  <li class="layui-nav-item" lay-unselect="">
+						    <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img icon">我</a>
+						    <dl class="layui-nav-child">
+						      <dd><a href="javascript:;">修改信息</a></dd>
+						      <dd><a href="javascript:;">安全管理</a></dd>
+						      <dd><a href="javascript:;">退了</a></dd>
+						    </dl>
+						  </li>
+						</ul>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			<div class="aside">
+				<ul class="layui-nav layui-nav-tree aside-ul" lay-filter="test">
+				<!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+				  <li class="layui-nav-item layui-nav-itemed">
+				    <a href="javascript:;" class="aside-li">收藏夹</a>
+					<dl class="layui-nav-child" v-for="item in aside.collections">
+						<dd>
+						  <a href="javascript:;" class="aside-dd">{{item.name}}</a>
+						  <dl class="layui-nav-child" v-for="bank in item.banks">
+							<dd><a :href="'./pages/bankInfo.html?bankid=' + bank.url" class="aside-dd-dd">{{bank.name}}</a></dd>
+						  </dl>
+						</dd>
+					</dl>
+				  </li>
+				  
+				  <li class="layui-nav-item">
+				    <a href="javascript:;" class="aside-li">我的归档</a>
+				    <dl class="layui-nav-child" v-for="item in aside.subfield">
+				    	<dd>
+				    	  <a href="javascript:;" class="aside-dd">{{item.name}}</a>
+				    	  <dl class="layui-nav-child" v-for="label in item.secLabel">
+				    		<dd>
+								<a :href="label.url" class="aside-dd-dd">{{label.name}}</a>
+								<dl class="layui-nav-child" v-for="bank in label.banks">
+									<dd>
+										<a :href="bank.url" class="aside-dd-dd-dd">{{bank.name}}</a>
+									</dd>
+								</dl>
+							</dd>
+				    	  </dl>
+				    	</dd>
+				    </dl>
+				  </li>
+				  
+				  <li class="layui-nav-item">
+				    <a href="javascript:;" class="aside-li">我的关注</a>
+				    <dl class="layui-nav-child" v-for="item in aside.follow">
+					  <dd><a :href="item.url" class="aside-dd-dd">{{item.nickname}}</a></dd>
+				    </dl>
+				  </li>
+				  
+				  
+				</ul>
+			</div>
+			
+			
+			<div class="main-view">
+				<div class="chart">
+					<div class="layui-carousel" id="carousel" lay-filter="test1">
+					  <div carousel-item="">
+					    <div v-for="pict in carouselList">
+							<img :src="pict.url" :title="pict.title" />
+						</div>
+					  </div>
+					</div> 
+				</div>
+				<div class="search-column">
+					<form class="layui-form" action="">
+					  <div class="layui-form-item retrieval">
+					    <label class="layui-form-label">查找提单</label>
+					    <div class="layui-input-block">
+					      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+					    </div>
+					  </div>
+					  
+					  <hr class="layui-bg-blue">
+					  
+					  <div class="layui-form-item detail">
+					      <label class="layui-form-label">题单标签</label>
+					      <div class="layui-input-block">
+							<input v-for="i in collections" type="checkbox" :name="i.name" :title="i.title" lay-skin="primary">
+					      </div>
+					   </div>
+					</form>
+				</div>
+				<div class="content">
+					<div class="content-text">
+						<div class="content-bank" v-for="item in contentBank">
+								<div>
+								<div class="bank-header">
+									<a :href="item.url"><span>{{item.name}}</span></a>
+								</div>
+								<div class="bank-info">
+									<div class="bank-info-icon">
+										<a :href="item.user.icon + item.user.nickname">
+											<img :src="item.user.icon"/>
+										</a>
+									</div>
+									<span class="bank-info-collection">分类 :  {{item.collection}}</span><br />
+									<span class="bank-info-collection">创建人 :  {{item.user.nickname}}</span>
+								</div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</body>
+</html>
+<script src="javaScript/nav.js"></script>
+<script src="javaScript/aside.js"></script>
+<script src="javaScript/index.js"></script>
+<script src="layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+  
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+
+<script>
+	
+layui.use(['carousel', 'form'], function(){
+  var carousel = layui.carousel
+  ,form = layui.form;
+  
+  //常规轮播
+  carousel.render({
+    elem: '#carousel'
+    ,arrow: 'fade',
+	interval: 8000,
+	height: '300px',
+	width: '1100px'
+  });
+  
+  //事件
+  carousel.on('change(test4)', function(res){
+    console.log(res)
+  });
+  
+  var $ = layui.$, active = {
+    set: function(othis){
+      var THIS = 'layui-bg-normal'
+      ,key = othis.data('key')
+      ,options = {};
+      
+      othis.css('background-color', '#5FB878').siblings().removeAttr('style'); 
+      options[key] = othis.data('value');
+      ins3.reload(options);
+    }
+  };
+  
+  //监听开关
+  form.on('switch(autoplay)', function(){
+    ins3.reload({
+      autoplay: this.checked
+    });
+  });
+  
+  $('.demoSet').on('keyup', function(){
+    var value = this.value
+    ,options = {};
+    if(!/^\d+$/.test(value)) return;
+    
+    options[this.name] = value;
+    ins3.reload(options);
+  });
+  
+  //其它示例
+  $('.demoTest .layui-btn').on('click', function(){
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+  });
+});
+</script>

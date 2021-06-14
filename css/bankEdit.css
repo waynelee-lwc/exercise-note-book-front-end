@@ -1,0 +1,1582 @@
+.bankEdit{
+    position: relative;
+    top: 85px;
+    left: 260px;
+    width: calc(100% - 260px);
+}
+
+.bank-edit-detail{
+    width: 90%;
+    height: 350px;
+    /* border: 1px solid; */
+    position: absolute;
+    left: 5%;
+    top: 40px;
+    background-color: #fff;
+}
+.subject-labels{
+	position: absolute;
+    width: 14%;
+    max-height: 1500px;
+    background-color: #fff;
+    top: 420px;
+    left: 5%;
+}
+.subject-info{
+	width: 75%;
+    /* height: 1000px; */
+    position: absolute;
+    top: 420px;
+    left: 20%;
+    background-color: #fff;
+}
+
+.bank-edit-detail-info{
+    border-bottom: 1px solid #f3f3f3;
+	width: 90%;
+    height: 27%;
+    /* float: left; */
+    margin: 0px auto;
+}
+
+.bank-edit-detail-title{
+    float: left;
+    border-right: 1px solid #f3f3f3;
+    height: 63%;
+    width: 6%;
+    margin-top: 1%;	
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+.bank-edit-detail-option{
+	/* border: 1px solid; */
+	border-right: 1px solid #f3f3f3;
+    height: 63%;
+    width: 25%;
+    margin-right: 2%;
+    margin-top: 1%;
+    float: left;
+}
+
+.bank-edit-detail-status{
+    /* border: 1px solid; */
+    float: left;
+    height: 63%;
+    width: 63%;
+    /* margin-left: 2%; */
+	margin-top: 1%;
+}
+
+/*保存和发布按钮和显示*/
+.bank-edit-detail-option-publish{
+    height: 40%;
+    width: 72%;
+    /* border: 1px solid; */
+    margin: 0px auto;
+}
+
+.bank-edit-detail-option-publish span{
+	display: inline-block;
+    font-size: 23px;
+    margin-top: 20px;
+	color: #2196F3;
+}
+
+.bank-edit-detail-option-publish button{
+    display: inline-block;
+    color: #2196f3;
+    background-color: #fff;
+    border: 2px solid;
+    font-size: 16px;
+    height: 40px;
+    margin-left: 20px;
+    box-shadow: 1px 1px #4CAF50;
+}
+
+.bank-edit-detail-option-publish button:hover{
+    box-shadow: 0px 0px;
+    color: #ff9800;
+}
+
+.bank-edit-detail-option-save{
+    height: 40%;
+    width: 72%;
+    /* border: 1px solid; */
+    margin: 0px auto;
+}
+
+.bank-edit-detail-option-save span{
+	display: inline-block;
+	font-size: 23px;
+	margin-top: 20px;
+	color: #2196F3;
+}
+
+.bank-edit-detail-option-save button{
+    display: inline-block;
+    color: #2196f3;
+    background-color: #fff;
+    border: 2px solid;
+    font-size: 16px;
+    height: 40px;
+    margin-left: 20px;
+    box-shadow: 1px 1px #4CAF50;
+}
+
+.bank-edit-detail-option-save button:hover{
+    box-shadow: 0px 0px;
+    color: #c13b2a;
+}
+
+/*题单简介*/
+.bank-edit-detail-status-description{
+    height: 100%;
+    width: 85%;
+    /* border: 1px solid; */
+}
+
+.bank-edit-detail-status-description span{
+	font-size: 23px;
+	color: #2196F3;
+	display: block;
+	margin-top: 10px;
+}
+
+.bank-edit-detail-status-description textarea{
+    resize: none;
+    width: 95%;
+    height: 60%;
+    border: 2px solid #2196F3;
+    padding: 1%;
+    /* border-left: 0px; */
+    /* border-right: 0px; */
+    display: block;
+    margin: 1% auto;
+    font-size: 19px;
+    overflow-y: auto;
+}
+
+
+.bank-edit-detail-info>div{
+    float: left;
+    width: 30%;
+	margin-right: 1%;
+}
+
+.bank-edit-detail-info>i{
+    float: left;
+    width: 1%;
+	margin-right: 1%;
+	margin-top: 2%;
+    font-size: 35px;
+    font-weight: bold;
+    color: #2196F3;
+}
+
+.bank-edit-detail-info>div label{
+    font-size: 20px;
+    padding: 9px 5px 9px 5px;
+    width: 200px;
+    text-align: left;
+}
+.bank-edit-detail-info>div .layui-input-block{
+	margin-left: 0px;
+    padding: 0px 10px;
+}
+
+.bank-edit-detail-info>div input,.bank-edit-detail-info>div select{
+	font-size: 22px;
+    display: block;
+	height:45px;
+    width: 100%;
+    padding-left: 10px;
+    border: 0px;
+    border-bottom: 3px solid #2196f3;
+}
+
+
+.bank-edit-detail-title span{
+    font-size: 32px;
+    color: #2196F3;
+    display: block;
+    width: 30%;
+    height: 100%;
+    margin: auto;
+}
+
+
+/*题目标签筛选*/
+
+.subject-labels-search{
+    width: 95%;
+    height: 60px;
+    border-bottom: 1px solid #f3f3f3; 
+    margin: auto;
+    margin-top: 20px;
+}
+
+.subject-labels-search input{
+    height: 45px;
+    border: 1px solid #03A9F4;
+    border-radius: 15px;
+	font-size: 16px;
+}
+
+/*题目标签创建*/
+.subject-labels-create{
+    width: 95%;
+    height: 60px;
+    border-bottom: 1px solid #f3f3f3; 
+    margin: auto;
+    margin-top: 20px;	
+}
+
+.subject-labels-create input[type='text']{
+	width: 60%;
+    height: 35px;
+    font-size: 20px;
+    border: 0px;
+    border-bottom: 3px solid #03A9F4;
+    padding-left: 3px;
+}
+
+.subject-labels-create .layui-btn{
+	font-size: 15px;
+    padding: 0px 3px;
+    color: #2196F3;
+    height: 35px;
+    border: 1px solid;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 1px 1px #03A9F4;
+}
+.subject-labels-create button:hover{
+	color: #961c1c;
+    box-shadow: 0px 0px;
+}
+
+/*题目标签列表*/
+.subject-labels-list{
+	width: 95%;
+	margin: auto;
+	/* border: 1px solid; */
+	margin-top: 15px;
+	max-height: 1400px;
+	overflow-y: auto;
+}
+.subject-labels-list-node{
+    height: 70px;
+    border: 1px solid;
+    margin-bottom: 20px;
+}
+
+.subject-labels-list td{
+	padding:4px 10px!important;
+	text-align: center;
+}
+
+.subject-labels-list td>span{
+    padding: 10px 10px!important;
+    text-align: center;
+    font-size: 16px;
+    background-color: #c13b2a;
+    color: #fff;
+    border-radius: 10px;
+    width: auto;
+    max-width: 120px;
+    display: inline-block;
+    overflow-x: hidden;
+}
+
+.subject-labels-list td input[type='checkbox']{
+	height: 20px;
+	width: 20px;
+}
+
+/*题目列表*/
+.subject-info-title{
+	width: 80%;
+    height: 60px;
+    border-bottom: 1px solid #f3f3f3;
+    margin: 0px auto;
+}
+
+.subject-info-list{
+    width: 96%;
+    /* height: 1000px; */
+	border-right: 1px solid #f3f3f3;
+	border-left: 1px solid #f3f3f3;
+    margin: 20px auto;
+}
+
+.subject-info-title span{
+    font-size: 30px;
+    letter-spacing: 3px;
+    display: block;
+    width: 200px;
+    text-align: center;
+    margin-top: 1%;
+    color: #5783d6;
+}
+
+/*题目列表元素*/
+.subject-info-list-node{
+	height: 220px;
+    width: 95%;
+    /* border: 1px solid; */
+    border-bottom: 3px solid #68b2e9;
+    margin: 0px auto;
+    /* margin-bottom: 15px; */
+	padding-top: 30px;
+}
+
+.subject-info-list-node:hover{
+	background-color: #f6f6f6;
+}
+
+.subject-info-list-node-info{
+	width: 20%;
+    height: 100%;
+    /* border: 1px solid; */
+	border-right: 3px solid #68b2e9;
+	float: left;
+}
+
+.subject-info-list-node-text{
+	width:67%;
+	height:100%;
+	/* border:1px solid; */
+	border-right: 3px solid #68b2e9;
+	float: left;
+	cursor: pointer;
+}
+
+.subject-info-list-node-option{
+    /* border: 1px solid; */
+    float: left;
+    height: 100%;
+    width: 12%;
+}
+
+.subject-info-list-node-option button{
+	margin: 26% auto;
+    display: block;
+    height: 50px;
+    width: 85px;
+    font-size: 16px;
+    text-align: center;
+    padding: 0px;
+    background-color: #fff;
+    color: #2196F3;
+    border: 2px solid;
+    box-shadow: 1px 1px #4CAF50;
+    border-radius: 10px;
+}
+
+.subject-info-list-node-option-modify button:hover{
+	box-shadow: 0px 0px;
+    color: #ff9800;
+}
+
+.subject-info-list-node-option-delete button:hover{
+	box-shadow: 0px 0px;
+	color: #c13b2a;
+}
+
+.subject-info-list-node-info div{
+    /* border: 1px solid; */
+    width: 30%;
+    height: 88%;
+    float: left;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+.subject-info-list-node-info div>span:first-child{
+	display: block;
+    font-size: 20px;
+	margin-top: 25%;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #9f9f9f;
+    padding-bottom: 6px;
+	text-align: center;
+}
+
+.subject-info-list-node-info-type span:nth-child(2){
+	background-color: #ffd51e !important
+}
+
+.subject-info-list-node-info-label span:nth-child(2){
+	background-color: #c13b2a !important;
+}
+
+
+.subject-info-list-node-info div>span:nth-child(2){
+	display: block;
+    font-size: 16px;
+    margin: 30% auto;
+    padding: 6px;
+    text-align: center;
+    background-color: #6ba2e3;
+    max-width: 90%;
+    height: auto;
+    border-radius: 15px;
+    color: #fff;
+}
+
+
+
+
+.subject-info-list-node-text-title{
+	width: 96%;
+    height: 25%;
+    margin: 0px auto;
+    padding-bottom: 3%;
+    border-bottom: 1px solid #a7a7a7;
+}
+
+.subject-info-list-node-text-content{
+    width: 98%;
+    height: 60%;
+    margin: 1% auto;
+    /* border: 1px solid; */
+}
+
+.subject-info-list-node-text-title span{
+	display: block;
+	font-size: 16px;
+	padding: 2% 2% 0% 2%;
+}
+.subject-info-list-node-text-content span{
+    font-size: 15px;
+    padding: 2% 2% 0% 2%;
+}
+
+
+.subject-info-page{
+    height: 80px;
+    width: 90%;
+    margin: 30px auto;
+    /* border: 1px solid; */
+}
+
+.subject-info-list-node-add{
+	width:100%;
+	height:100%;
+	cursor: pointer;
+}
+
+.subject-info-list-node-add i{
+    display: block;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    vertical-align: middle;
+    font-size: 150px;
+    color: #c7c7c7;
+}
+.subject-info-list-node-add i:hover{
+	color: #8ebdd2;
+}
+
+#subject-info-page-bar .layui-laypage a{
+    color: #94999F;
+    font-size: 25px;
+}
+#subject-info-page-bar .layui-laypage em{
+     font-size: 25px;
+}
+
+.layui-laypage .layui-laypage-spr{
+    margin-right: 5px;
+}
+#subject-info-page-bar .layui-laypage a{
+    margin-right: 5px;
+}
+#subject-info-page-bar .layui-laypage-curr{
+    margin-right: 5px;
+}
+.layui-laypage-prev,.layui-laypage-next{
+    font-family: "fontello";
+}
+#subject-info-page-bar .layui-laypage .layui-laypage-curr .layui-laypage-em{
+    background-color: #1FB1EA;
+}
+
+#subject-info-page-bar .layui-laypage a,#subject-info-page-bar  .layui-laypage span:not(.layui-laypage-skip){
+    box-sizing: border-box;
+    padding: 4px 9px;
+    height: 60px;
+    width: 60px;
+    line-height: 1.42857143;
+}
+#subject-info-page-bar  .layui-laypage .layui-laypage-count{
+    width: auto!important;
+    float: none;
+    color: #94999F;
+    font-size: 23px;
+}
+#subject-info-page-bar .layui-laypage-btn{
+    background-color: #1FB1EA;
+    color: #FFFFFF;
+    width: 70px;
+    height: 50px;
+    padding: 1px 5px;
+    line-height: 1.5;
+}
+
+#subject-info-page-bar .layui-laypage a,#subject-info-page-bar .layui-laypage-spr{
+    border: 0px;
+}
+#subject-info-page-bar a.layui-laypage-prev,#subject-info-page-bar a.layui-laypage-next{
+    border: 1px solid #ddd;
+}
+#subject-info-page-bar>.layui-laypage>a:hover{
+    color: #fff;
+    background-color: #58CAF4;
+    border-color: #58CAF4;
+}
+#subject-info-page-bar a.layui-laypage-prev:hover,#subject-info-page-bar a.layui-laypage-next:hover{
+    color: #94999F;
+    background-color: #fff;
+    border-color: #ddd;
+}
+#subject-info-page-bar .layui-laypage-curr em:not(.layui-laypage-em){
+    line-height: 1.328571;
+}
+#subject-info-page-bar .layui-laypage-btn:hover{
+    color: #656A71;
+    border-color: #DEE1E3;
+    background-color: #fff;
+}
+
+#subject-layout{
+    height:100%;
+	width:100%;
+}
+
+#subject-layout>div{
+	/* border:1px solid; */
+	overflow-y: auto;
+}
+
+
+
+/*题目详情信息排版*/
+
+.subject-layout-title{
+    float: left;
+    width: 91%;
+    height: 20%;
+    /* border: 1px solid; */
+    margin-left: 2.5%;
+	padding:0% 2%;
+}
+
+.subject-layout-content{
+    float: left;
+    width: 91%;
+    height: 30%;
+    /* border: 1px solid; */
+    margin-left: 2.5%;
+    margin-top: 2%;
+	padding: 0% 2%;
+}
+
+.subject-layout-answer{
+    /* border: 1px solid; */
+    float: left;
+    height: 17%;
+    width: 91%;
+    margin-left: 2.5%;
+    margin-top: 2%;
+	padding: 0% 2%;
+}
+
+.subject-layout-options{
+    /* border: 1px solid; */
+    float: left;
+    height: 30%;
+    width: 23%;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.subject-layout-hint{
+    float: left;
+    /* border: 1px solid; */
+    height: 15%;
+    width: 91%;
+    margin-left: 2.5%;
+    margin-top: 2%;
+	padding:0% 2%;
+}
+/*单选题详情*/
+.subject-layout-title-xz{
+	
+}
+.subject-layout-content-xz{
+	
+}
+.subject-layout-answer-xz{
+	
+}
+.subject-layout-hint-xz{
+	
+}
+
+/*多选题详情*/
+.subject-layout-title-dx{
+	
+}
+.subject-layout-content-dx{
+	
+}
+.subject-layout-answer-dx{
+	
+}
+.subject-layout-hint-dx{
+	
+}
+
+/*判断题详情*/
+.subject-layout-title-pd{
+	height:40%;
+}
+.subject-layout-content-pd{
+	display: none;	
+}
+.subject-layout-answer-pd{
+
+}
+.subject-layout-hint-pd{
+	height: 30%;
+}
+
+/*问答题详情*/
+.subject-layout-title-wd{
+	height:30%;
+}
+.subject-layout-content-wd{
+	display:none;
+}
+.subject-layout-answer-wd{
+	height:30%;
+}
+.subject-layout-hint-wd{
+	height:30%;
+}
+
+/*材料题详情*/
+.subject-layout-title-cl{
+	height:30%;
+}
+.subject-layout-content-cl{
+	height:20%;
+}
+.subject-layout-answer-cl{
+	min-height:20%;
+}
+.subject-layout-hint-cl{
+	min-height:20%;
+}
+
+
+#subject-layout div:hover{
+	background-color: #f6f6f6;
+}
+
+#subject-layout div>span:first-child{
+    font-size: 30px;
+    letter-spacing: 5px;
+    color: #0969b5;
+	display: inline-block;
+	margin-right: 1%;
+}
+
+#subject-layout div>span{
+	font-size: 21px;
+    letter-spacing: 2px;
+}
+
+.subject-layout-answer span{
+	color:red;
+}
+
+.subject-layout-hint span:last-child{
+	color:green
+}
+
+.subject-layout-options button{
+    height: 35%;
+    margin: 0px auto;
+    width: 70%;
+    display: block;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    border-radius: 15px;
+    font-size: 18px;
+}
+
+.subject-layout-options-answer{
+	background-color: #c13b2a;
+}
+
+.subject-layout-options-hint{
+	background-color: #008000;
+}
+
+#new-subject-layout{
+	height:100%;
+	width:100%;
+}
+
+#new-subject-layout>div{
+	border-bottom:1px solid #c3c3c3;
+	float:left;
+	overflow-y: auto;
+}
+
+#new-subject-layout>div>span:first-child{
+    font-size: 27px;
+    letter-spacing: 5px;
+    color: #0969b5;
+	display: inline-block;
+	margin-right: 1%;
+}
+
+.new-subject-option{
+	height: 10%;
+    width: 95%;
+	margin-left: 2%;
+	overflow-y: visible !important;
+}
+
+.new-subject-title{
+    height: 25%;
+    width: 95%;
+	margin-left: 2%;
+}
+
+.new-subject-content{
+    width: 95%;
+    height: 30%;
+	margin-left: 2%;
+}
+
+.new-subject-answer{
+    width: 95%;
+    height: 15%;
+	margin-left: 2%;
+}
+
+.new-subject-hint{
+	height: 15%;
+    width: 65%;
+	margin-left: 2%;
+}
+
+.new-subject-option>div{
+	margin-right: 5%;
+    float: left;
+}
+
+.new-subject-option-type{
+	width:35%;
+}
+
+.new-subject-option-label{
+	width:55%;
+}
+
+
+.new-subject-option>div label{
+    padding: 20px 0px 0px 0px;
+    text-align: left;
+    font-size: 30px;
+    color: #0969b5;
+	width:auto;
+}
+
+.new-subject-option input[type='text']{
+	font-size: 20px;
+    height: 50px;
+    border: 0px;
+    border-bottom: 3px solid #2196F3;
+}
+
+.new-subject-option-type select{
+	font-size: 20px;
+    height: 50px;
+    border: 0px;
+    border-bottom: 3px solid #ffd51e;
+}
+
+.new-subject-option-label select{
+	font-size: 20px;
+    height: 50px;
+    border: 0px;
+    border-bottom: 3px solid #c13b2a;
+}
+
+.new-subject-option-type dd,
+.new-subject-option-label dd{
+	font-size: 20px;
+}
+
+.new-subject-option-type dl dd.layui-this{
+	background-color: #ffd51e;
+	color:#fff
+}
+
+.new-subject-option-label dl dd.layui-this{
+	background-color: #c13b2a;
+	color:#fff;
+}
+
+
+.new-subject-option-type .layui-input-block{
+    width: 70% !important;
+    margin-left: 33% !important;
+}
+
+.new-subject-option .layui-input-block{
+    margin-left: 20%;
+    /* margin-top: 4%; */
+    width: 80%;
+}
+
+.new-subject-submit{
+	width:30%;
+	/* border:1px solid; */
+	height:15%;
+	float:left;
+}
+
+.new-subject-submit button{
+/*    height: 90px;
+    width: 90px;
+    margin: auto;
+    margin-top: calc(50% - 90px);
+    display: block;
+    font-size: 20px; */
+	height: 90px;
+    width: 90px;
+    margin: auto;
+    margin-top: calc(50% - 45px);
+    display: block;
+    background-color: #fff;
+    font-size: 20px;
+    color: #1e9fff;
+    border: 2px solid;
+    box-shadow: 2px 2px #a2b3d8;
+}
+
+.new-subject-submit button:hover{
+	color: #E91E63;
+}
+
+
+/*创建题目题面输入文本域*/
+.new-subject-title textarea{
+	font-size: 15px;
+	resize: none;
+	height: 150px;
+	margin-top: 10px;
+	border: 2px solid #2196f3;
+}
+
+.new-subject-title .layui-input-block{
+    margin: auto;
+    width: 95%;
+}
+
+/*创建题目内容选择框*/
+.new-subject-content .layui-form-label{
+    text-align: right;
+    font-size: 17px;
+    width: 10px;
+}
+
+.new-subject-content .layui-input-block{
+	margin-left: 50px;
+    width: 75%;
+}
+
+.new-subject-content input{
+    font-size: 16px;
+    border: 1px;
+    border-bottom: 3px solid #2196f3;
+}
+
+/*创建题目答案单选框*/
+.new-subject-answer .layui-input-block{
+	margin-left: 10px;
+}
+
+.new-subject-answer .layui-form-radio{
+	margin-left: 20px;
+}
+.new-subject-answer .layui-form-radio div{
+	font-size:20px;
+}
+
+/*创建题目题面答案文本域*/
+.new-subject-answer textarea{
+	font-size: 15px;
+	resize: none;
+	height: 150px;
+	margin-top: 10px;
+	border: 2px solid #2196f3;
+}
+
+.new-subject-answer .layui-input-block{
+    margin: auto;
+    width: 95%;
+}
+
+/*创建题目提示*/
+.new-subject-hint textarea{
+	font-size: 15px;
+	resize: none;
+	min-height:100px;
+	height:100%;
+	margin-top: 10px;
+	border: 2px solid #2196f3;
+}
+
+.new-subject-hint .layui-input-block{
+    margin: auto;
+    width: 95%;
+	height:100%;
+}
+
+.new-subject-hint>div{
+	height:65%;
+}
+
+
+
+/*新加题目单选题 xz*/
+.new-subject-title-xz{
+	height:30%;
+}
+
+.new-subject-content-xz{
+	height:30%;
+	width:65%
+}
+
+.new-subject-answer-xz{
+	height:30%;
+	width:25%;
+}
+
+.new-subject-hint-xz{
+	height:25%;
+}
+
+.new-subject-submit-xz{
+	height:25%;
+}
+
+.new-subject-title-xz .layui-input-block{
+}
+
+.new-subject-title-xz textarea{
+}
+
+/*新加题目判断题 pd*/
+.new-subject-title-pd{
+	height:25%;
+}
+
+.new-subject-content-pd{
+	height:0%;
+	display: none;
+}
+
+.new-subject-answer-pd{
+	height:20%;
+}
+
+.new-subject-hint-pd{
+	height: 25%;
+}
+
+.new-subject-submit-pd{
+	height: 25%;
+}
+
+/*新加题目材料题 cl*/
+.new-subject-title-cl{
+	height:28%;
+}
+
+.new-subject-content-cl{
+	height:37%;
+	width:45%;
+}
+
+.new-subject-answer-cl{
+	height:37%;
+	width:45%
+}
+
+.new-subject-hint-cl{
+	height:20%;
+}
+
+.new-subject-submit-cl{
+	height:20%;
+}
+
+.new-subject-content-cl input{
+	width:80%;
+	margin-right: 0px;
+	float:left;
+}
+
+.new-subject-content-cl .layui-input-block button{
+    width: 35px;
+    padding: 0px;
+    margin-left: 4px;
+    /* border: 1px solid; */
+    color: #FF5722;
+    background-color: #ffffff;
+}
+
+.new-subject-content-cl .layui-input-block button:hover{
+	/* background-color: #dadada; */
+	
+	border: 1px solid #FF5722;
+	/* color:#fff; */
+	/* border:0px; */
+	/* font-weight: bold; */
+	opacity: 1;
+}
+
+.new-subject-content-add button{
+    font-size: 20px;
+    margin: auto;
+    width: 280px;
+    display: block;
+    background: #fff;
+    border: 1px solid;
+    color: #1E9FFF;
+}
+
+.new-subject-content-add button:hover{
+	color:#E91E63;
+}
+
+.new-subject-answer-cl .layui-form-label{
+    text-align: right;
+    font-size: 16px;
+    width: 10px;
+}
+
+.new-subject-answer-cl .layui-input-block{
+	margin-left: 50px;
+    width: 75%;
+}
+
+.new-subject-answer-cl input[type="text"]{
+    font-size: 16px;
+    border: 1px;
+    border-bottom: 3px solid #2196f3;
+}
+
+/*新加题目多选题 dx*/
+.new-subject-title-dx{
+	height:30%;
+}
+
+.new-subject-content-dx{
+	height:30%;
+	width:65%;
+}
+
+.new-subject-answer-dx{
+	height:30%;
+	width:25%;
+}
+
+.new-subject-hint-dx{
+	height:25%;
+}
+
+.new-subject-submit-dx{
+	height:25%;
+}
+
+.new-subject-answer-dx .layui-input-block>div{
+    margin-left: 25px;
+}
+
+.new-subject-answer-dx .layui-input-block>div span,
+.new-subject-answer-dx .layui-input-block>div i{
+	font-size: 20px;
+}
+
+
+/*新加题目问答题 wd*/
+.new-subject-title-wd{
+	height:33%;
+}
+
+.new-subject-content-wd{
+	height:0%;
+	display: none;
+}
+
+.new-subject-answer-wd{
+	height:30%
+}
+
+.new-subject-hint-wd{
+	height:25%;
+}
+
+.new-subject-submit-wd{
+	height:25%;
+}
+
+
+/*修改题目弹出框修饰*/
+
+#upd-subject-layout{
+	height:100%;
+	width:100%;
+}
+
+#upd-subject-layout>div{
+	border-bottom:1px solid #c3c3c3;
+	float:left;
+	overflow-y: auto;
+}
+
+#upd-subject-layout>div>span:first-child{
+    font-size: 27px;
+    letter-spacing: 5px;
+    color: #0969b5;
+	display: inline-block;
+	margin-right: 1%;
+}
+
+.upd-subject-option{
+	height: 10%;
+    width: 95%;
+	margin-left: 2%;
+	overflow-y: visible !important;
+}
+
+.upd-subject-title{
+    height: 25%;
+    width: 95%;
+	margin-left: 2%;
+}
+
+.upd-subject-content{
+    width: 95%;
+    height: 30%;
+	margin-left: 2%;
+}
+
+.upd-subject-answer{
+    width: 95%;
+    height: 15%;
+	margin-left: 2%;
+}
+
+.upd-subject-hint{
+	height: 15%;
+    width: 65%;
+	margin-left: 2%;
+}
+
+.upd-subject-option>div{
+	margin-right: 5%;
+    float: left;
+}
+
+.upd-subject-option-type{
+	width:35%;
+}
+
+.upd-subject-option-label{
+	width:55%;
+}
+
+
+.upd-subject-option>div label{
+    padding: 20px 0px 0px 0px;
+    text-align: left;
+    font-size: 27px;
+    color: #0969b5;
+	width:auto;
+}
+
+.upd-subject-option input[type='text']{
+	font-size: 20px;
+    height: 50px;
+    border: 0px;
+    border-bottom: 3px solid #2196F3;
+}
+
+.upd-subject-option-type select{
+	font-size: 20px;
+    height: 50px;
+    border: 0px;
+    border-bottom: 3px solid #ffd51e;
+}
+
+.upd-subject-option-label select{
+	font-size: 20px;
+    height: 50px;
+    border: 0px;
+    border-bottom: 3px solid #c13b2a;
+}
+
+.upd-subject-option-type dd,
+.upd-subject-option-label dd{
+	font-size: 20px;
+}
+
+.upd-subject-option-type dl dd.layui-this{
+	background-color: #ffd51e;
+	color:#fff
+}
+
+.upd-subject-option-label dl dd.layui-this{
+	background-color: #c13b2a;
+	color:#fff;
+}
+
+
+.upd-subject-option-type .layui-input-block{
+    width: 70% !important;
+    margin-left: 33% !important;
+}
+
+.upd-subject-option .layui-input-block{
+    margin-left: 20%;
+    /* margin-top: 4%; */
+    width: 80%;
+}
+
+.upd-subject-submit{
+	width:30%;
+	/* border:1px solid; */
+	height:15%;
+	float:left;
+}
+
+.upd-subject-submit button{
+/*    height: 90px;
+    width: 90px;
+    margin: auto;
+    margin-top: calc(50% - 90px);
+    display: block;
+    font-size: 20px; */
+    height: 90px;
+    width: 90px;
+    margin: auto;
+    margin-top: calc(50% - 90px);
+    display: block;
+    background-color: #fff;
+    font-size: 20px;
+    color: #1e9fff;
+    border: 3px solid;
+}
+
+.upd-subject-submit button:hover{
+	color: #E91E63;
+}
+
+
+/*创建题目题面输入文本域*/
+.upd-subject-title textarea{
+	font-size: 20px;
+	resize: none;
+	height: 115px;
+	margin-top: 10px;
+	border: 0px;
+	border-bottom: 4px solid #2196f3;
+}
+
+.upd-subject-title .layui-input-block{
+    margin: auto;
+    width: 95%;
+}
+
+/*创建题目内容选择框*/
+.upd-subject-content .layui-form-label{
+    text-align: right;
+    font-size: 20px;
+    width: 20px;
+}
+
+.upd-subject-content .layui-input-block{
+	margin-left: 50px;
+    width: 75%;
+}
+
+.upd-subject-content input{
+    font-size: 20px;
+    border: 1px;
+    border-bottom: 3px solid #2196f3;
+}
+
+/*创建题目答案单选框*/
+.upd-subject-answer .layui-input-block{
+	margin-left: 10px;
+}
+
+.upd-subject-answer .layui-form-radio{
+	margin-left: 20px;
+}
+.upd-subject-answer .layui-form-radio div{
+	font-size:20px;
+}
+
+/*创建题目题面答案文本域*/
+.upd-subject-answer textarea{
+	font-size: 20px;
+	resize: none;
+	height: 115px;
+	margin-top: 10px;
+	border: 0px;
+	border-bottom: 4px solid #2196f3;
+}
+
+.upd-subject-answer .layui-input-block{
+    margin: auto;
+    width: 95%;
+}
+
+/*创建题目提示*/
+.upd-subject-hint textarea{
+	font-size: 20px;
+	resize: none;
+	min-height:100px;
+	height:80%;
+	margin-top: 10px;
+	border: 0px;
+	border-bottom: 4px solid #2196f3;
+}
+
+.upd-subject-hint .layui-input-block{
+    margin: auto;
+    width: 95%;
+	height:90%;
+}
+
+.upd-subject-hint>div{
+	height:60%;
+}
+
+
+
+/*新加题目单选题 xz*/
+.upd-subject-title-xz{
+	height:30%;
+}
+
+.upd-subject-content-xz{
+	height:30%;
+	width:65%
+}
+
+.upd-subject-answer-xz{
+	height:30%;
+	width:25%;
+}
+
+.upd-subject-hint-xz{
+	height:25%;
+}
+
+.upd-subject-submit-xz{
+	height:25%;
+}
+
+.upd-subject-title-xz .layui-input-block{
+}
+
+.upd-subject-title-xz textarea{
+}
+
+.upd-subject-answer-xz input[type='radio']{
+	height: 20px;
+    width: 20px;
+}
+
+.upd-subject-answer-xz span{
+	font-size: 20px;
+    margin-right: 10px;	
+}
+
+/*新加题目判断题 pd*/
+.upd-subject-title-pd{
+	height:25%;
+}
+
+.upd-subject-content-pd{
+	height:0%;
+	display: none;
+}
+
+.upd-subject-answer-pd{
+	height:20%;
+}
+
+.upd-subject-hint-pd{
+	height: 25%;
+}
+
+.upd-subject-submit-pd{
+	height: 25%;
+}
+
+/*新加题目材料题 cl*/
+.upd-subject-title-cl{
+	height:28%;
+}
+
+.upd-subject-content-cl{
+	height:37%;
+	width:45%;
+}
+
+.upd-subject-answer-cl{
+	height:37%;
+	width:45%
+}
+
+.upd-subject-hint-cl{
+	height:20%;
+}
+
+.upd-subject-submit-cl{
+	height:20%;
+}
+
+.upd-subject-content-cl input{
+	width:80%;
+	margin-right: 0px;
+	float:left;
+}
+
+.upd-subject-content-cl .layui-input-block button{
+    width: 40px;
+    padding: 0px;
+    margin-left: 10px;
+    border: 1px solid;
+    color: #FF5722;
+    background-color: #ffffff;
+}
+
+.upd-subject-content-cl .layui-input-block button:hover{
+	background-color: #FF5722;
+	color:#fff;
+	border:0px;
+	font-weight: bold;
+}
+
+.upd-subject-content-add button{
+    font-size: 20px;
+    margin: auto;
+    width: 280px;
+    display: block;
+    background: #fff;
+    border: 1px solid;
+    color: #1E9FFF;
+}
+
+.upd-subject-content-add button:hover{
+	color:#E91E63;
+}
+
+.upd-subject-answer-cl .layui-form-label{
+    text-align: right;
+    font-size: 20px;
+    width: 20px;
+}
+
+.upd-subject-answer-cl .layui-input-block{
+	margin-left: 50px;
+    width: 75%;
+}
+
+.upd-subject-answer-cl input[type="text"]{
+    font-size: 20px;
+    border: 1px;
+    border-bottom: 3px solid #2196f3;
+}
+
+/*新加题目多选题 dx*/
+.upd-subject-title-dx{
+	height:30%;
+}
+
+.upd-subject-content-dx{
+	height:30%;
+	width:65%;
+}
+
+.upd-subject-answer-dx{
+	height:30%;
+	width:25%;
+}
+
+.upd-subject-hint-dx{
+	height:25%;
+}
+
+.upd-subject-submit-dx{
+	height:25%;
+}
+
+.upd-subject-answer-dx .layui-input-block>div{
+    margin-left: 25px;
+}
+
+.upd-subject-answer-dx .layui-input-block>div span,
+.upd-subject-answer-dx .layui-input-block>div i{
+	font-size: 20px;
+}
+
+.upd-subject-answer-dx input[type='checkbox']{
+	height: 20px;
+    width: 20px;
+}
+
+.upd-subject-answer-dx span{
+	font-size: 20px;
+    margin-right: 10px;	
+}
+
+/*新加题目问答题 wd*/
+.upd-subject-title-wd{
+	height:33%;
+}
+
+.upd-subject-content-wd{
+	height:0%;
+	display: none;
+}
+
+.upd-subject-answer-wd{
+	height:30%
+}
+
+.upd-subject-hint-wd{
+	height:20%;
+}
+
+.upd-subject-submit-wd{
+	height:20%;
+}
+

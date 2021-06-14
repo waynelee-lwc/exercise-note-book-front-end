@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>合众易成学习交流平台</title>
+		
+		<script src="../javaScript/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		
+		
+		<link rel="stylesheet" href="../layui/css/layui.css"  media="all">
+		<link href="../css/aside.css" rel="stylesheet" />
+		<link href="../css/bankEdit.css" rel="stylesheet"/>
+		<link href="../css/nav.css" rel="stylesheet"/>
+		<link href="../css/general.css" rel="stylesheet">
+	</head>
+	<body>
+			<div>
+				<!-- 头部导航栏 -->
+				<div class="nav">
+					<div class="nav-logo">
+						<a :href="urls.index"><img :src="urls.logo" class="layui-nav-img icon"></a>
+					</div>
+					<div class="nav-option">
+						<ul class="layui-nav nav-ul">
+						  <li v-for="item in navList" class="layui-nav-item list-node">
+							  <a :href="item.href">{{item.title}}</a>
+						  </li>
+						</ul>
+					</div>
+					<div class="nav-login" v-if="userInfo == null" >
+						<ul class="layui-nav nav-ul">
+						  <li class="layui-nav-item">
+						    <a :href="urls.login">登录</span></a>
+						  </li>
+						  <li class="layui-nav-item">
+						    <a :href="urls.register">注册</span></a>
+						  </li>
+						</ul>
+					</div>
+					<div class="nav-user" v-if="userInfo != null">
+						<ul class="layui-nav nav-ul">
+						  <li class="layui-nav-item">
+						    <a href="">个人中心<span class="layui-badge-dot"></span></a>
+						  </li>
+						  <li class="layui-nav-item" lay-unselect="">
+						    <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img icon">我</a>
+						    <dl class="layui-nav-child">
+						      <dd><a href="javascript:;">修改信息</a></dd>
+						      <dd><a href="javascript:;">安全管理</a></dd>
+						      <dd><a href="javascript:;">退了</a></dd>
+						    </dl>
+						  </li>
+						</ul>
+					</div>
+				</div>
+				
+			
+				<!-- 侧边栏 -->
+				<div class="aside">
+					<ul class="layui-nav layui-nav-tree aside-ul" lay-filter="test">
+					<!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+					  <li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;" class="aside-li">收藏夹</a>
+						<dl class="layui-nav-child" v-for="item in aside.collections">
+							<dd>
+							  <a href="javascript:;" class="aside-dd">{{item.name}}</a>
+							  <dl class="layui-nav-child" v-for="bank in item.banks">
+								<dd><a :href="bank.url" class="aside-dd-dd">{{bank.name}}</a></dd>
+							  </dl>
+							</dd>
+						</dl>
+					  </li>
+					  
+					  <li class="layui-nav-item">
+						<a href="javascript:;" class="aside-li">我的归档</a>
+						<dl class="layui-nav-child" v-for="item in aside.subfield">
+							<dd>
+							  <a href="javascript:;" class="aside-dd">{{item.name}}</a>
+							  <dl class="layui-nav-child" v-for="label in item.secLabel">
+								<dd>
+									<a :href="label.url" class="aside-dd-dd">{{label.name}}</a>
+									<dl class="layui-nav-child" v-for="bank in label.banks">
+										<dd>
+											<a :href="bank.url" class="aside-dd-dd-dd">{{bank.name}}</a>
+										</dd>
+									</dl>
+								</dd>
+							  </dl>
+							</dd>
+						</dl>
+					  </li>
+					  
+					  <li class="layui-nav-item">
+						<a href="javascript:;" class="aside-li">我的关注</a>
+						<dl class="layui-nav-child" v-for="item in aside.follow">
+						  <dd><a :href="item.url" class="aside-dd-dd">{{item.nickname}}</a></dd>
+						</dl>
+					  </li>
+					  
+					  
+					</ul>
+				</div>
+		
+				<!-- 题单编辑 -->
+				<div class="bankEdit">
+					<!-- 题单信息 -->
+					<div class="bank-edit-detail">
+						<!-- 题单头部信息 -->
+						<div class="bank-edit-detail-info">
+							<div class="bank-edit-detail-col">
+								<div class="layui-form-item">
+								  <label class="layui-form-label">分类</label><br />
+								  <div class="layui-input-block">
+									   <select name="city" lay-verify="" lay-filter="col" class="layui-input" v-model="bankDetail.col" lay-search>
+										 <option v-for="col in bankCols" :value="col.id">{{col.name}}</option>
+									   </select>
+								  </div>
+								</div>
+							</div>
+							<i class="layui-icon layui-icon-right"></i>
+							<div class="bank-edit-detail-sec-col">
+								<div class="layui-form-item">
+								  <label class="layui-form-label">归档</label><br />
+								  <div class="layui-input-block">
+									<select name="city" lay-verify="" lay-filter="col" class="layui-input" v-model="bankDetail.secCol" lay-search>
+									  <option v-for="col in bankSecCols" :value="col.id">{{col.name}}</option>
+									</select>   
+								  </div>
+								</div>
+							</div>
+							<i class="layui-icon layui-icon-right"></i>
+							<div class="bank-edit-detail-name bank-edit-">
+								<div class="layui-form-item">
+								  <label class="layui-form-label">名称</label><br />
+								  <div class="layui-input-block">
+									<input type="text" name="title" required lay-verify="required" placeholder="题单命名" autocomplete="off" class="layui-input" v-model="bankDetail.name">   
+								  </div>
+								</div>
+							</div>
+						</div>
+						<!-- 题单编辑大标题 -->
+						<div class="bank-edit-detail-title">
+							<span>题单编辑</span>
+						</div>
+						<!-- 题单控制栏 -->
+						<div class="bank-edit-detail-option">
+							<!-- 题单发布状态 -->
+							<div class="bank-edit-detail-option-publish">
+								<span>未发布</span>
+								<button type="button" class="layui-btn">点击发布</button>
+							</div>
+							
+							<!-- 题单保存状态 -->
+							<div class="bank-edit-detail-option-save">
+								<span>未保存</span>
+								<button type="button" class="layui-btn">点击保存</button>
+							</div>
+						</div>
+						<!-- 题单状态栏 -->
+						<div class="bank-edit-detail-status">
+							<div class="bank-edit-detail-status-description">
+								<span>题单简介</span>
+								<textarea v-model="bankDetail.description"></textarea>
+							</div>
+						</div>
+					</div>
+					
+					<!-- 标签列表 -->
+					<div class="subject-labels">
+						<!-- 检索框 -->
+						<div class="subject-labels-search">
+							<input type="text" name="title" required lay-verify="required" placeholder="检索题目标签" autocomplete="off" class="layui-input">
+						</div>
+						
+						<!-- 添加题单 -->
+						<div class="subject-labels-create">
+							<input type="text" v-model="newLabel.name"/>
+							<button type="button" class="layui-btn" :class="{'layui-btn-disabled' : newLabel.name == ''}" @click="addLabel">创建</button>
+						</div>
+						
+						<!-- 标签列表 -->
+						<div class="subject-labels-list">
+							<table class="layui-table"  lay-skin="nob" lay-size="lg">
+							  <colgroup>
+								<col width="220">
+								<col>
+							  </colgroup>
+							  <tbody>
+								<tr v-for="(item,index) in subjectLabels">
+								  <td><span>{{item.name}}</span></td>
+								  <td>
+										<input type="checkbox" :name="item.id" title="选择" :value="item.id" v-model="labelSelected">
+								  </td>
+								</tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+					
+					
+					<!-- 题目列表部分 -->
+					<div class="subject-info">
+						<!-- 标题 -->
+						<div class="subject-info-title">
+							<span>题目列表</span>
+						</div>
+						<!-- 题目列表 -->
+						<div class="subject-info-list">
+							<!-- 单个题目展示 -->
+							<div class="subject-info-list-node" v-for="(item,index) in subjects">
+								<!-- 信息部分 -->
+								<div class="subject-info-list-node-info">
+									<div class="subject-info-list-node-info-index">
+										<span>序号</span>
+										<span>{{index + 1}}</span>
+									</div>
+									<div class="subject-info-list-node-info-type">
+										<span>类型</span>
+										<span>{{getTypeById(item.type).name}}</span>
+									</div>
+									<div class="subject-info-list-node-info-label">
+										<span>标签</span>
+										<span v-show="item.label != '0'">{{getLabelById(item.label).name}}</span>
+									</div>
+								</div>
+								
+								<!-- 正文部分 -->
+								<div class="subject-info-list-node-text"@click="layout(index)">
+									<!-- 单选题、多选题 -->
+									<div v-if="item.type == 0 || item.type == 1">
+										<!-- 题面 -->
+										<div class="subject-info-list-node-text-title">
+											<span v-text="item.title"></span>
+										</div>
+										<!-- 内容 -->
+										<div class="subject-info-list-node-text-content">
+											<span v-for="option in item.content">{{option.label}}.{{option.content}}</span>
+										</div>
+									</div>
+									
+									<!-- 问答题 -->
+									<div v-if="item.type == 2">
+										<!-- 题面 -->
+										<div class="subject-info-list-node-text-title" style="">
+											<span v-text="item.title"></span>
+										</div>
+										<!-- 内容 -->
+										<!-- <div class="subject-info-list-node-text-content">
+											<span v-text="item.content"></span>
+										</div> -->
+									</div>
+									
+									<!-- 判断题 -->
+									<div v-if="item.type == 3">
+										<!-- 题面 -->
+										<div class="subject-info-list-node-text-title" style="">
+											<span v-text="item.title"></span>
+										</div>
+										<!-- 内容 -->
+										<!-- <div class="subject-info-list-node-text-content">
+											<span v-text="item.content"></span>
+										</div> -->
+									</div>
+									
+									<!-- 材料题 -->
+									<div v-if="item.type == 4">
+										<!-- 题面 -->
+										<div class="subject-info-list-node-text-title" style="">
+											<span v-text="item.title"></span>
+										</div>
+										<!-- 内容 -->
+										<div class="subject-info-list-node-text-content">
+											<span v-for="(question,quesIdx) in item.content">{{quesIdx + 1}}.{{question.title}}</span>
+										</div>
+									</div>
+								</div>
+								
+								<!-- 按钮部分 -->
+								<div class="subject-info-list-node-option">
+									<!-- 更新按钮 -->
+									<div class="subject-info-list-node-option-modify">
+										<button type="button" class="layui-btn" @click="modifySubject(index)">修改</button>
+									</div>
+									<!-- 删除按钮 -->
+									<div class="subject-info-list-node-option-delete">
+										<button type="button" class="layui-btn" @click="deleteSubject(index)">删除</button>
+									</div>
+								</div>
+							</div>
+							<!-- 新建题目按钮 -->
+							<div class="subject-info-list-node">
+								<div class="subject-info-list-node-add" @click="addSubject()">
+									<i class="layui-icon layui-icon-add-circle"></i>
+								</div>
+							</div>
+							
+						</div>
+						<!-- 分页导航栏 -->
+						<div class="subject-info-page lay-row">
+							<div id="subject-info-page-bar" class="layui-col-md10"></div>
+						</div>
+					</div>
+					
+					
+					<!-- 题目详细信息弹出框 -->
+					<div id="subject-layout" style="display: none;" v-if="subjects.length > 0">
+						<!-- 题目题面 -->
+						<div class="subject-layout-title" :class="'subject-layout-title-' + getTypeById(subjectSelected.type).val">
+							<span>{{getTypeById(subjectSelected.type).title}}</span><br>
+							<!-- 单选题、多选题、判断题、问答题 题面 -->
+							<span v-if="subjectSelected.type == 0 || subjectSelected.type == 1 || subjectSelected.type == 2 || subjectSelected.type == 3">{{subjectSelected.title}}</span>
+							
+							<!-- 材料题题面 -->
+							<span v-if="subjectSelected.type == 4">{{subjectSelected.title}}</span>
+						</div>
+						<!-- 题目内容 -->
+						<div class="subject-layout-content" :class="'subject-layout-content-' + getTypeById(subjectSelected.type).val">
+							<span>{{getTypeById(subjectSelected.type).content}}</span><br>
+							<!-- 单选题、多选题 -->
+							<span v-if="subjectSelected.type == 0 || subjectSelected.type == 1" v-for="(option,opId) in subjectSelected.content">{{option.label}}.{{option.content}}    </span>
+							
+							<!-- 材料题 -->
+							<span v-if="subjectSelected.type == 4" v-for="(option,opId) in subjectSelected.content">{{opId + 1}}.{{option.title}}<br></span>
+						</div>
+						<!-- 题目答案 -->
+						<div class="subject-layout-answer" :class="'subject-layout-answer-' + getTypeById(subjectSelected.type).val" @click="clickAns()" >
+							<span>{{getTypeById(subjectSelected.type).answer}}</span><br>
+							<!-- 单选题 -->
+							<span v-show="layoutInfo.showAns" v-if="subjectSelected.type == 0">{{subjectSelected.answer}}</span>
+							
+							<!-- 多选题 -->
+							<span v-show="layoutInfo.showAns" v-if="subjectSelected.type == 1" v-for="ans in subjectSelected.answer">{{ans}}</span>
+							
+							<!-- 判断题 -->
+							<span v-show="layoutInfo.showAns" v-if="subjectSelected.type == 3">{{subjectSelected.answer == "true" ? "对" : "错"}}</span>
+							
+							<!-- 问答题 -->
+							<span v-show="layoutInfo.showAns" v-if="subjectSelected.type == 2">{{subjectSelected.answer}}</span>
+							
+							<!-- 材料题 -->
+							<span v-show="layoutInfo.showAns" v-if="subjectSelected.type == 4" v-for="(ans,ansId) in subjectSelected.answer">{{ansId + 1}}.{{ans}}<br></span>
+							
+						</div>
+						<!-- 题目提示 -->
+						<div class="subject-layout-hint" :class="'subject-layout-hint-' + getTypeById(subjectSelected.type).val" @click="clickHint()">
+							<span>{{getTypeById(subjectSelected.type).hint}}</span><br>
+							<span v-show="layoutInfo.showHint">{{subjectSelected.hint}}</span>
+						</div>
+					</div>
+					
+					<!-- 添加题目弹出框 -->
+					<div id="new-subject-layout" style="display: none;">
+						<!-- 头部选择框 -->
+						<div class="new-subject-option">
+							<!-- 头部选择框——类型选择框 -->
+							<div class="new-subject-option-type">
+								<div class="layui-form-item">
+								  <label class="layui-form-label">类型</label><br />
+								  <div class="layui-input-block">
+									  <form class="layui-form">
+										   <select name="type" lay-verify="" lay-filter="new-type" class="layui-input" v-model="subjectTypeId" lay-search>
+											 <option v-for="(type,typeIdx) in subjectType" :value="typeIdx">{{type.name}}</option>
+										   </select>
+									  </form>
+								  </div>
+								</div>
+							</div>
+							<!-- 头部选择框——标签选择框 -->
+							<div class="new-subject-option-label">
+								<div class="layui-form-item">
+								  <label class="layui-form-label">标签</label><br />
+								  <div class="layui-input-block">
+									<form class="layui-form">
+										<select name="new-label" lay-verify="" lay-filter="new-col" class="layui-input" lay-search>
+											<option value="0">无标签</option>
+										  <option v-for="(option,idx) in subjectLabels" :value="option.id">{{option.name}}</option>
+										</select>   
+									</form>
+								  </div>
+								</div>
+							</div>
+						</div>
+						<!-- 新建题目 题面部分 -->
+						<div class="new-subject-title" :class="'new-subject-title-' + currSubType.val">
+							<span>{{currSubType.title}}</span>
+							<div class="layui-form-item layui-form-text">
+							    <div class="layui-input-block">
+							      <textarea name="desc" placeholder="请输入题面" class="layui-textarea" v-model="newSubject.title"></textarea>
+							    </div>
+							</div>
+						</div>
+						
+						<!-- 新建题目 内容部分 -->
+						<div class="new-subject-content" :class="'new-subject-content-' + currSubType.val">
+							<span>{{currSubType.content}}</span>
+							
+							<!-- 单选和多选的选项 -->
+							<div v-if="currSubType.val == 'xz' || currSubType.val == 'dx'">
+								<div class="layui-form-item" v-for="(option,idx) in newSubject.content">
+								    <label class="layui-form-label">{{option.label}}</label>
+								    <div class="layui-input-block">
+								      <input type="text" name="title" required  lay-verify="required" :placeholder="option.label + '选项内容'" autocomplete="off" class="layui-input" v-model="newSubject.content[idx].content">
+								    </div>
+								</div>
+							</div>
+							
+							<!-- 材料题的题目 -->
+							<div v-show="currSubType.val == 'cl'">
+								<!-- 题目列表 -->
+								<div class="layui-form-item" v-for="(que,idx) in newSubject.content">
+								    <label class="layui-form-label">{{idx + 1}}</label>
+								    <div class="layui-input-block">
+								      <input type="text" name="question" placeholder="请填写问题内容" autocomplete="off" class="layui-input" v-model="newSubject.content[idx].title">
+									  <div style="float:left">
+										  <button type="button" class="layui-btn " @click="delQuestion(idx)"><i class="layui-icon layui-icon-close-fill"></i></button>
+									  </div>
+								    </div>
+								</div>
+								<!-- 添加问题按钮 -->
+								<div class="layui-form-item">
+									<div class="new-subject-content-add">
+										<button type="button" class="layui-btn layui-btn-normal" @click="addQuestion()">添加问题</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- 新建题目 答案部分-->
+						<div class="new-subject-answer" :class="'new-subject-answer-' + currSubType.val">
+							<span>{{currSubType.answer}}</span>
+							
+							<!-- 单选题的答案 -->
+							<div v-show="currSubType.val == 'xz'">
+								<form class="layui-form">
+									<div class="layui-form-item">
+										<div class="layui-input-block">
+										  <input type="radio" name="xz-ans" v-for="option in newSubject.content" :value="option.label" :title="option.label" :checked="newSubject.answer == option.label" lay-filter="xz-ans">
+										</div>
+									</div>
+								</form>
+							</div>
+							
+							<!-- 判断题的答案 -->
+							<div v-show="currSubType.val == 'pd'">
+								<form class="layui-form">
+									<div class="layui-form-item">
+										<div class="layui-input-block">
+										  <input type="radio" name="pd-ans" value="true" title="对" v-model="newSubject.answer">
+										  <input type="radio" name="pd-ans" value="false" title="错" v-model="newSubject.answer">
+										</div>
+									</div>
+								</form>
+							</div>
+							
+							<!-- 多选题的答案 -->
+							<div v-show="currSubType.val == 'dx'">
+								<form class="layui-form">
+									<div class="layui-form-item">
+										<div class="layui-input-block">
+										  <input v-for="option in newSubject.content" name="dx-ans" :value="option.label" :title="option.label"  type="checkbox" lay-skin="primary" lay-filter="dx-ans"/>
+										  <!-- <input type="checkbox" name="" value="A" title="A" v-model="newSubject.answer" lay-skin="primary"> -->
+										</div>
+									</div>
+								</form>
+							</div>
+							
+							<!-- 问答题的答案 -->
+							<div v-show="currSubType.val == 'wd'">
+								<div class="layui-form-item layui-form-text">
+								    <div class="layui-input-block">
+								      <textarea name="desc" placeholder="请输入题面" class="layui-textarea" v-model="newSubject.answer"></textarea>
+								    </div>
+								</div>
+							</div>
+							
+							<!-- 材料题的答案 -->
+							<div v-show="currSubType.val == 'cl'">
+								<div class="layui-form-item" v-for="(que,idx) in newSubject.answer">
+								    <label class="layui-form-label" v-if="que != null">{{idx + 1}}</label>
+								    <div class="layui-input-block" v-if="que != null">
+								      <input type="text" name="question" placeholder="请填写问题答案" autocomplete="off" class="layui-input" v-model="newSubject.answer[idx]">
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- 新建题目 提示部分 -->
+						<div class="new-subject-hint" :class="'new-subject-hint-' + currSubType.val">
+							<span>{{currSubType.hint}}</span>
+							<div class="layui-form-item layui-form-text">
+							    <div class="layui-input-block">
+							      <textarea name="desc" placeholder="请输入提示" class="layui-textarea" v-model="newSubject.hint"></textarea>
+							    </div>
+							</div>
+						</div>
+						
+						<!-- 新建题目 提交按钮 -->
+						<div class="new-subject-submit" :class="'new-subject-submit-' + currSubType.val">
+							<button type="button" class="layui-btn layui-btn-normal" @click="submitAddition">添加<br />题目</button>
+						</div>
+					</div>
+					
+					<!-- 修改题目弹出框 -->
+					<div id="upd-subject-layout" style="display: none;">
+						<!-- 头部选择框 -->
+						<div class="upd-subject-option">
+							<!-- 头部选择框——类型选择框 -->
+							<!-- <div class="upd-subject-option-type">
+								<div class="layui-form-item">
+								  <label class="layui-form-label">类型</label><br />
+								  <div class="layui-input-block">
+										   <select name="type" lay-verify="" lay-filter="upd-type" class="layui-input" v-model="updateSubject.type" lay-search>
+											 <option v-for="(type,typeIdx) in subjectType" :value="typeIdx">{{type.name}}</option>
+										   </select>
+								  </div>
+								</div>
+							</div> -->
+							<!-- 头部选择框——标签选择框 -->
+							<div class="upd-subject-option-label">
+								<div class="layui-form-item">
+								  <label class="layui-form-label">标签</label><br />
+								  <div class="layui-input-block">
+										<select name="upd-label" lay-verify="" lay-filter="upd-col" class="layui-input" v-model="updateSubject.label" lay-search>
+											<option value="0">无标签</option>
+										  <option v-for="(option,idx) in subjectLabels" :value="option.id">{{option.name}}</option>
+										</select>   
+								  </div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- 更新题目 题面部分 -->
+						<div class="upd-subject-title" :class="'upd-subject-title-' + getTypeById(updateSubject.type).val">
+							<span>{{getTypeById(updateSubject.type).title}}</span>
+							<div class="layui-form-item layui-form-text">
+							    <div class="layui-input-block">
+							      <textarea name="desc" placeholder="请输入题面" class="layui-textarea" v-model="updateSubject.title"></textarea>
+							    </div>
+							</div>
+						</div>
+						
+						<!-- 更新题目 内容部分 -->
+						<div class="upd-subject-content" :class="'upd-subject-content-' + getTypeById(updateSubject.type).val">
+							<span>{{getTypeById(updateSubject.type).content}}</span>
+							
+							<!-- 单选和多选的选项 -->
+							<div v-if="getTypeById(updateSubject.type).val == 'xz' || getTypeById(updateSubject.type).val == 'dx'">
+								<div class="layui-form-item" v-for="(option,idx) in updateSubject.content">
+								    <label class="layui-form-label">{{option.label}}</label>
+								    <div class="layui-input-block">
+								      <input type="text" name="title" required  lay-verify="required" :placeholder="option.label + '选项内容'" autocomplete="off" class="layui-input" v-model="updateSubject.content[idx].content">
+								    </div>
+								</div>
+							</div>
+							
+							<!-- 材料题的题目 -->
+							<div v-show="getTypeById(updateSubject.type).val == 'cl'">
+								<!-- 题目列表 -->
+								<div class="layui-form-item" v-for="(que,idx) in updateSubject.content">
+								    <label class="layui-form-label">{{idx + 1}}</label>
+								    <div class="layui-input-block">
+								      <input type="text" name="question" placeholder="请填写问题内容" autocomplete="off" class="layui-input" v-model="updateSubject.content[idx].title">
+									  <div style="float:left">
+										  <button type="button" class="layui-btn " @click="delQuestion(idx)">删除</button>
+									  </div>
+								    </div>
+								</div>
+								<!-- 添加题目按钮 -->
+								<div class="layui-form-item">
+									<div class="upd-subject-content-add">
+										<button type="button" class="layui-btn layui-btn-normal" @click="addQuestion()">添加题目</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- 更新题目 答案部分-->
+						<div class="upd-subject-answer" :class="'upd-subject-answer-' + getTypeById(updateSubject.type).val">
+							<span>{{getTypeById(updateSubject.type).answer}}</span>
+							
+							<!-- 单选题的答案 -->
+							<div v-show="getTypeById(updateSubject.type).val == 'xz'">
+									<div class="layui-form-item">
+										<div class="layui-input-block" v-for="option in updateSubject.content">
+										  <span>{{option.label}}</span><input type="radio" name="upd-xz-ans" :value="option.label" :title="option.label" v-model="updateSubject.answer" lay-filter="upd-xz-ans">
+										</div>
+									</div>
+							</div>
+							
+							<!-- 判断题的答案 -->
+							<div v-show="getTypeById(updateSubject.type).val == 'pd'">
+								<form class="layui-form">
+									<div class="layui-form-item">
+										<div class="layui-input-block">
+										  <input type="radio" name="pd-ans" value="true" title="对" v-model="updateSubject.answer == 'true'">
+										  <input type="radio" name="pd-ans" value="false" title="错" v-model="updateSubject.answer == 'false'">
+										</div>
+									</div>
+								</form>
+							</div>
+							
+							<!-- 多选题的答案 -->
+							<div v-show="getTypeById(updateSubject.type).val == 'dx'">
+								<div class="layui-form-item">
+									<div class="layui-input-block" v-for="option in updateSubject.content">
+									  <span>{{option.label}}</span><input name="dx-ans" :value="option.label" :title="option.label"  type="checkbox" lay-skin="primary" lay-filter="upd-dx-ans" v-model="updateSubject.answer"/>
+									</div>
+								</div>
+							</div>
+							
+							<!-- 问答题的答案 -->
+							<div v-show="getTypeById(updateSubject.type).val == 'wd'">
+								<div class="layui-form-item layui-form-text">
+								    <div class="layui-input-block">
+								      <textarea name="desc" placeholder="请输入题面" class="layui-textarea" v-model="updateSubject.answer"></textarea>
+								    </div>
+								</div>
+							</div>
+							
+							<!-- 材料题的答案 -->
+							<div v-show="getTypeById(updateSubject.type).val == 'cl'">
+								<div class="layui-form-item" v-for="(que,idx) in updateSubject.answer">
+								    <label class="layui-form-label" v-if="que != null">{{idx + 1}}</label>
+								    <div class="layui-input-block" v-if="que != null">
+								      <input type="text" name="question" placeholder="请填写问题答案" autocomplete="off" class="layui-input" v-model="updateSubject.answer[idx]">
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- 修改题目 提示部分 -->
+						<div class="upd-subject-hint" :class="'upd-subject-hint-' + getTypeById(updateSubject.type).val">
+							<span>{{getTypeById(updateSubject.type).hint}}</span>
+							<div class="layui-form-item layui-form-text">
+							    <div class="layui-input-block">
+							      <textarea name="desc" placeholder="请输入题面" class="layui-textarea" v-model="updateSubject.hint"></textarea>
+							    </div>
+							</div>
+						</div>
+						
+						<!-- 修改题目 提交按钮 -->
+						<div class="upd-subject-submit" :class="'upd-subject-submit-' + getTypeById(updateSubject.type).val">
+							<button type="button" class="layui-btn layui-btn-normal" @click="submitUpdate">确认<br />修改</button>
+						</div>
+				</div>
+			</div>
+			
+	</body>
+</html>
+<script src="../javaScript/jquery-3.5.1.js"></script>
+<script src="../layui/layui.js" charset="utf-8"></script>
+<script src="../javaScript/nav.js"></script>
+<script src="../javaScript/aside.js"></script>
+<script src="../javaScript/bankEdit.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+  
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+
+

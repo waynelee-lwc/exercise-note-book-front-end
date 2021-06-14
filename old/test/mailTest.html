@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="sheet">
+			<p>邮箱</p><input type="input" v-model="target" /><br />
+			<p>标题</p><input type="input" v-model="subject" /><br />
+			<p>正文</p><textarea v-model="content"></textarea>
+			<button @click="submit()">发送邮件</button>
+		</div>
+	</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+	var sheet = new Vue({
+		el:".sheet",
+		data:{
+			target:"",
+			subject:"",
+			content:""
+		},
+		methods:{
+			submit:function(){
+				var that = this;
+				console.log(this.target);
+				console.log(this.subject);
+				console.log(this.content);
+				axios.get("/test/sendMail.action?target=" + this.target + "&subject=" + this.subject + "&content=" + this.content).then(function(res){
+					var data = res.data;
+					alert(data);
+				})
+			}
+			
+		}
+	});
+</script>
+
+<style type="text/css">
+	.sheet{
+		width: 700px;
+		height: 600px;
+		border: solid #000000;
+		position: absolute;
+		top: 200px;
+		left: calc(50% - 350px);
+		
+	}
+	.sheet input{
+		height:30px;
+		width:300px;
+		display: inline-block;
+		margin-left:20px;
+		border:3px solid #00007f;
+		border-radius: 10px;
+		font-size: 18px;
+	}
+	.sheet textarea{
+		height:100px;
+		width:300px;
+		display:inline-block;
+		margin-left:20px;
+		border:3px solid #00007f;
+		border-radius: 10px;
+		padding-top:10px;
+		font-size: 15px;
+	}
+	.sheet p{
+		display: inline-block;
+		margin-left:180px;
+		margin-top:100px;
+		font-size:25px;
+	}
+	.sheet button{
+		width: 100px;
+		height: 60px;
+		position: absolute;
+		left: calc(50% - 100px);
+		bottom: 70px;
+		background-color: #0077ff;
+		color: white;
+		font-size: 20px;
+	}
+</style>

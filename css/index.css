@@ -1,0 +1,155 @@
+.main-view{
+    position: absolute;
+    width: calc(100% - 250px);
+    height: 0px;
+    left: 250px;
+	background: #f6f6f6;
+}
+
+.chart{
+    position: absolute;
+    background-color: #fff;
+    width: 1100px;
+    height: 300px;
+    top: 150px;
+    left: calc(50% - 550px);
+}
+
+.content{
+	position: absolute;
+    width: 1600px;
+    top: 650px;
+    left: calc(50% - 800px);
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 1px -1px 1px 1px #dedede;
+    clear: both;
+}
+
+.search-column{
+	position: absolute;
+    width: 1100px;
+    height: 160px;
+    top: 475px;
+    left: calc(50% - 550px);
+    background-color: #fff;
+}
+
+	
+.layui-carousel img{
+	display:block;
+	max-width:100%;
+	height:auto;
+	margin:0px auto;
+}
+
+.layui-unselect{
+	margin-left:10px;
+}
+
+.layui-unselect span{
+    width: auto;
+    font-size: 15px;
+}
+
+.layui-icon-ok{
+	
+}
+
+.layui-bg-blue{
+    position: absolute;
+    width: 96%;
+    border-radius: 50%;
+    top: 60px;
+    left: 2%;
+}
+
+.detail{
+    position: absolute;
+    top: 70px;
+}
+
+.retrieval{
+    position: absolute;
+    top: 10px;
+}
+
+.content-title{
+    border: 1px solid #000;
+    height: 100px;
+    width: 800px;
+    margin:auto;
+	margin-top:40px;
+}
+
+.content-text{
+    width: 96%;
+    margin:auto;
+	margin-top: 30px;
+	/* border: 1px solid; */
+	height:auto;
+}
+
+.content-bank{
+    width: 450px;
+    height: 250px;
+    border: 1px solid #10a0ea;
+    float: left;
+    margin: 0px 25px 20px 25px;
+    border-radius: 15px;
+}
+
+/* .content-bank:hover{
+    position: relative;
+    top: -10px;
+    left: -10px;
+}
+ */
+.bank-header{
+    height: 25%;
+    width: 94%;
+    border-bottom: 2px solid;
+    margin: 0px auto;
+    margin-top: 4%;
+}
+.bank-info{
+	height: 60%;
+    width: 94%;
+    margin: 0px auto;
+	/* border: 1px solid; */
+    margin-top: 1%;
+}
+.bank-header span{
+    font-size: 30px;
+    color: #10a0ea;
+    display:-moz-inline-box;
+    display:inline-block;
+    margin-left: 20px;
+    width: 100%;
+}
+.bank-header span:hover{
+    font-size: 30px;
+    color: #0c7db6;
+    display:-moz-inline-box;
+    display:inline-block;
+    margin-left: 20px;
+    width: 100%;
+}
+
+.bank-info-icon{
+	margin-left: 5%;
+    margin-top: 5%;
+}
+
+.bank-info-icon img{
+	border: 3px solid #10a0ea;
+    border-radius: 50%;
+    width: 20%;
+	float:left;
+}
+
+.bank-info-collection{
+    font-size: 20px;
+    margin-left: 5%;
+	display: inline-block;
+}

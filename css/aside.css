@@ -1,0 +1,32 @@
+.aside{
+	z-index: 30;
+    position: fixed;
+    height: 100%;
+    top: 85px;
+    /* border: 1px solid; */
+    border-radius: 0px 4px 4px 0px;
+	box-shadow: 3px 0px 2px #1e2e3e;
+}
+
+.aside-li{
+	font-size:23px !important;
+}
+
+.aside-dd{
+    /* color: #41b534 !important; */
+    margin-left: 15px;	
+	font-size:20px !important;
+}
+
+.aside-dd-dd{
+    /* color: #3F51B5 !important; */
+    margin-left: 30px;
+}
+.aside-dd-dd-dd{
+	margin-left:45px;
+}
+
+.aside-ul{
+	width:260px;
+	background-color: #34495e;
+}
